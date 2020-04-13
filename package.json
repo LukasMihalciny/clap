@@ -1,0 +1,25 @@
+{
+  "name": "clap",
+  "version": "0.1.0",
+  "description": "Costlocker desktop application",
+  "main": "main.js",
+  "scripts": {
+    "dev": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LukasMihalciny/clap.git"
+  },
+  "keywords": [
+    "costlocker",
+    "electron",
+    "desktop",
+    "application"
+  ],
+  "author": "Lukas Mihalciny",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LukasMihalciny/clap/issues"
+  },
+  "homepage": "https://github.com/LukasMihalciny/clap#readme"
+}
