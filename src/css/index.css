@@ -1,0 +1,84 @@
+body {
+	background-color: #16332D;
+	color: #f2f2f2;
+}
+
+nav {
+	background-color: #648862;
+}
+nav #logo {
+	padding: 6px 15px;
+}
+nav #logo h1 {
+	margin-bottom: 0px;
+	line-height: 1;
+}
+nav .controlls {
+	position: absolute;
+	right: 15px;
+	margin-top: 18px;
+}
+nav .controlls button {
+	margin-left: 6px;
+}
+
+.btn {
+	background-color: #E0C36E;
+}
+.btn:hover, .btn:focus {
+	opacity: 0.8;
+}
+
+#currently_tracking {
+	background-color: #27594F;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+#currently_tracking h3 {
+	margin-bottom: 0px;
+}
+
+span {
+	padding-right: 10px;
+	opacity: 0.6;
+}
+
+small {
+	opacity: 0.6;
+}
+
+h2 {
+	font-size: 1rem;
+	margin-bottom: 4px;
+	text-decoration: underline;
+}
+
+#projects, #today {
+	background-color: #27594F;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+#projects {
+	border-right: 1px solid #E0C36E;
+}
+ #today {
+	border-left: 1px solid #E0C36E;
+}
+
+#projects .btn {
+	margin: 6px 4px;
+}
+
+#project_list > div {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#project_list h5 {
+	margin-bottom: 0px;
+}
+.half {
+	width: 45%;
+	display: inline-block;
+}
