@@ -1,7 +1,6 @@
 'use strict';
 
 function Constants() {
-	this.logged_in = false;
 	this.token = '';
 	this.bearer = '';
 	this.user = {};

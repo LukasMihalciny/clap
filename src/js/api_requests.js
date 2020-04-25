@@ -31,9 +31,11 @@ Api_requests.prototype.user_detail = function() {
 		result => {
 			if ( storage.status === 200 ) {
 				// run success
+				login_feedback.in();
 				console.log( 'result: ' + typeof result ); console.log( result );
 			} else {
 				// display error
+				login_feedback.out();
 				var error_object = {
 					my_message: 'Login API failed.',
 					error: result

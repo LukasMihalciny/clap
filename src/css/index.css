@@ -30,7 +30,17 @@ nav .controlls button {
 	padding: 5px 12px;
 	top: 1px;
 	position: relative;
-	width: 300px;
+	width: 500px;
+}
+
+.controlls .hidden {
+	display: none;
+}
+#login_loading {
+	width: 350px;
+}
+#login_name {
+	opacity: 1;
 }
 
 /* buttons

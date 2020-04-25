@@ -20,10 +20,12 @@
 			<small>Costlocker desktop application</small>
 		</div>
 		<div class="controlls">
-			<input id="token_input" type="text" name="token" placeholder="Enter personal access token...">
-			<button id="log_in_button" class="btn">Log in</button>
-			<button id="open_token_page" class="btn">Get token</button>
-			<button id="log_out_button" class="btn">Log out</button>
+			<button id="login_loading" class="btn" disabled="disabled">Connecting</button>
+			<input id="token_input" type="text" name="token" placeholder="Enter personal access token..." class="hidden">
+			<button id="log_in_button" class="btn hidden">Log in</button>
+			<button id="open_token_page" class="btn hidden">Get token</button>
+			<span id="login_name" class="hidden">Welcome NAME, COMPANY</span>
+			<button id="log_out_button" class="btn hidden">Log out</button>
 		</div>
 	</nav>
 
@@ -133,6 +135,7 @@
 <script src="../js/constants.js"></script>
 <script src="../js/api_requests.js"></script>
 <script src="../js/error_window.js"></script>
+<script src="../js/login_feedback.js"></script>
 <script src="../js/login.js"></script>
 </body>
 </html>
