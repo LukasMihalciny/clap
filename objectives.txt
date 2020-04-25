@@ -1,0 +1,33 @@
+prihlasovanie cez token
+request na zoznam otvorenych projektov
+vypisanie projektov
+request na zacatie trackovania noveho projektu
+request na aktualne trackovany projekt
+zobrazenie aktualne trackovaneho projektu
+odtrackovany cas pre aktualne trackovany projekt
+request na zastavenie trackovania aktualne trackovaneho projektu
+request na zoznam dnes trackovanych projektov
+vypisanie dnesnych
+moznost zatvorit do system try
+vizualny feedback navigacie formularom
+klavesove skratky pre navigaciu
+klobalna klavesova skratka pre otvorenie
+zatvorit po vykonani akcie do system try
+zobrazit notifikaciu po uspesno requeste
+otvorit okno po errore
+najprv zopakovat request
+moznost menit poznamku aktualne trackovanemu
+prihlasovanie cez ucet
+odhlasovanie
+zakazat moznost oznacovat text
+krajsi vizual - dark mode + neon light blue
+build installation files
+current version
+deliver updates
+download website with patch notes
+trello feedback
+keybind settings
+about
+donate btc
+app settings
+subscribe for changelog
