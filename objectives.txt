@@ -1,5 +1,4 @@
-prihlasovanie cez token
-error message popup
+ukladanie prihlasovacich udajov cez node.js fs
 request na zoznam otvorenych projektov
 vypisanie projektov
 request na zacatie trackovania noveho projektu
@@ -32,3 +31,8 @@ about
 donate btc
 app settings
 subscribe for changelog
+
+=======================================================================
+
+prihlasovanie cez token
+error message window

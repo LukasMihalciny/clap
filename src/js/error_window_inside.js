@@ -19,3 +19,15 @@ ipc.on(
 
 	}
 );
+
+/*
+error_object expected format
+var error_object = {
+	my_message: 'dpwq oqwpoj dqwop',
+	error: {
+		pqweq: 'po qwkd pqodwqo d',
+		qwe: 2324,
+		pqwodq: 'dpqw opqw dopq'
+	}
+}
+*/
