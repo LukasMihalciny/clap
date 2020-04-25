@@ -1,4 +1,5 @@
 prihlasovanie cez token
+error message popup
 request na zoznam otvorenych projektov
 vypisanie projektov
 request na zacatie trackovania noveho projektu

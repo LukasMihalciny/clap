@@ -1,8 +1,12 @@
+/* global
+============================================= */
 body {
 	background-color: #16332D;
 	color: #f2f2f2;
 }
 
+/* nav
+============================================= */
 nav {
 	background-color: #648862;
 }
@@ -22,6 +26,15 @@ nav .controlls button {
 	margin-left: 6px;
 }
 
+.controlls input {
+	padding: 5px 12px;
+	top: 1px;
+	position: relative;
+	width: 300px;
+}
+
+/* buttons
+============================================= */
 .btn {
 	background-color: #E0C36E;
 }
@@ -29,6 +42,8 @@ nav .controlls button {
 	opacity: 0.8;
 }
 
+/* currently_tracking
+============================================= */
 #currently_tracking {
 	background-color: #27594F;
 	margin-top: 20px;
@@ -55,6 +70,8 @@ h2 {
 	text-decoration: underline;
 }
 
+/* projects, today
+============================================= */
 #projects, #today {
 	background-color: #27594F;
 	padding-top: 15px;
