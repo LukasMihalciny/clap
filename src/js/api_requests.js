@@ -11,16 +11,40 @@ Api_requests.prototype.user_detail = function() {
 	  headers: headers,
 	  redirect: 'follow'
 	};
+	var storage = {};
 
 	fetch(
 		'https://new.costlocker.com/api-public/v2/me',
 		requestOptions
 	).then(
-		response => response.text()
+		response => {
+			// save response headers into storage
+			storage = response;
+			return response;
+		}
 	).then(
-		result => console.log( result )
+		response => {
+			// parse response text
+			return response.text();
+		}
+	).then(
+		result => {
+			if ( storage.status === 200 ) {
+				// run success
+				console.log( 'result: ' + typeof result ); console.log( result );
+			} else {
+				// display error
+				var error_object = {
+					my_message: 'Login API failed.',
+					error: result
+				};
+				error_window.display( error_object );
+			}
+		}
 	).catch(
-		error => console.log( 'error', error )
+		error => {
+			console.log( 'error: ' + typeof error ); console.log( error );
+		}
 	);
 
 }
