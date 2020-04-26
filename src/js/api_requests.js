@@ -31,8 +31,8 @@ Api_requests.prototype.user_detail = function() {
 		result => {
 			if ( storage.status === 200 ) {
 				// run success
+				constants.user = JSON.parse( result );
 				login_feedback.in();
-				console.log( 'result: ' + typeof result ); console.log( result );
 			} else {
 				// display error
 				login_feedback.out();

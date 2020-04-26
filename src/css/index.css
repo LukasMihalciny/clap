@@ -36,11 +36,10 @@ nav .controlls button {
 .controlls .hidden {
 	display: none;
 }
-#login_loading {
-	width: 350px;
-}
 #login_name {
 	opacity: 1;
+	position: relative;
+	top: 3px;
 }
 
 /* buttons

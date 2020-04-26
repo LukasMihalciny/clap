@@ -13,9 +13,7 @@ Login.prototype.add_listeners = function() {
 }
 
 Login.prototype.log_me_in = function() {
-
 	var token = this.dom.token_input.value;
-
 	// validate
 	if ( token === undefined || token === '' ) {
 		// display error
@@ -26,11 +24,9 @@ Login.prototype.log_me_in = function() {
 		error_window.display( error_object );
 	} else {
 		// launch request
-		login_feedback.loading();
 		this.set_bearer( token );
 		api_requests.user_detail();
 	}
-
 }
 
 Login.prototype.set_bearer = function( token ) {
@@ -49,27 +45,23 @@ Login.prototype.log_out = function() {
 	constants.user = {};
 	localStorage.removeItem( 'token' );
 	localStorage.removeItem( 'bearer' );
-	this.dom.token_input.value = '';
 	login_feedback.out();
 }
 
 Login.prototype.on_startup_check_localstorage = function() {
-	login_feedback.loading();
-	var bearer = localStorage.getItem( 'bearer' );
-	if ( bearer === null ) {
-		login_feedback.out();
-		return;
-	}
-	constants.bearer = bearer;
+	// var bearer = localStorage.getItem( 'bearer' );
+	// if ( bearer === null ) {
+	// 	login_feedback.out();
+	// 	return;
+	// }
+	// constants.bearer = bearer;
 	// api_requests.user_detail(); <-- this was the main purpose, token is for testing
 	var token = localStorage.getItem( 'token' );
 	if ( token === null ) {
 		login_feedback.out();
 		return;
 	}
-	constants.token = token;
 	this.dom.token_input.value = token;
-	login_feedback.in();
 }
 
 /* init

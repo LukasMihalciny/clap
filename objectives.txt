@@ -23,6 +23,7 @@ krajsi vizual - dark mode + neon light blue
 build installation files
 current version
 deliver updates
+start in debugging mode option (password protected)
 download website with patch notes
 trello feedback
 keybind settings
