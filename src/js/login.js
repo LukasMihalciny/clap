@@ -10,6 +10,7 @@ Login.prototype.add_listeners = function() {
 	this.dom.open_token_page.addEventListener( 'click', function() { shell.openExternal( 'https://new.costlocker.com/api-token' ); } );
 	this.dom.log_in_button.addEventListener( 'click', function() { this.log_me_in() }.bind( this ) );
 	this.dom.log_out_button.addEventListener( 'click', function() { this.log_out() }.bind( this ) );
+	this.dom.reload.addEventListener( 'click', function() { api_requests.reload() }.bind( this ) );
 }
 
 Login.prototype.log_me_in = function() {
@@ -62,6 +63,8 @@ Login.prototype.on_startup_check_localstorage = function() {
 		return;
 	}
 	this.dom.token_input.value = token;
+	constants.bearer = localStorage.getItem( 'bearer' );
+	constants.token = localStorage.getItem( 'token' );
 }
 
 /* init

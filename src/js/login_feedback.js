@@ -10,7 +10,8 @@ Login_feedback.prototype.get_dom = function() {
 		token_input: document.getElementById( 'token_input' ),
 		log_in_button: document.getElementById( 'log_in_button' ),
 		log_out_button: document.getElementById( 'log_out_button' ),
-		login_name: document.getElementById( 'login_name' )
+		login_name: document.getElementById( 'login_name' ),
+		reload: document.getElementById( 'reload' )
 	};
 }
 
@@ -20,6 +21,7 @@ Login_feedback.prototype.in = function() {
 	this.hide_all();
 	this.dom.login_name.classList.remove( 'hidden' );
 	this.dom.log_out_button.classList.remove( 'hidden' );
+	this.dom.reload.classList.remove( 'hidden' );
 }
 
 Login_feedback.prototype.out = function() {

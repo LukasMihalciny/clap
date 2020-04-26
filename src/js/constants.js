@@ -4,6 +4,7 @@ function Constants() {
 	this.token = '';
 	this.bearer = '';
 	this.user = {};
+	this.cl_data = {};
 }
 
 Constants.prototype.get_authorization = function() {
