@@ -11,6 +11,4 @@ Constants.prototype.get_authorization = function() {
 	return 'Basic ' + this.bearer;
 }
 
-/* init
-**************************************************************************/
-var constants = new Constants;
+export default new Constants;

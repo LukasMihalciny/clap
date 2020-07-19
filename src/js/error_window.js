@@ -46,6 +46,4 @@ Error_window.prototype.display = function( error_object ) {
 	wind.show();
 }
 
-/* init
-**************************************************************************/
-var error_window = new Error_window;
+export default new Error_window;

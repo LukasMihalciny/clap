@@ -1,5 +1,7 @@
 'use strict';
 
+import constants from './constants.js';
+
 function Login_feedback() {
 	this.dom = this.get_dom();
 }
@@ -43,6 +45,4 @@ Login_feedback.prototype.hide_all = function() {
 	}
 }
 
-/* init
-**************************************************************************/
-var login_feedback = new Login_feedback;
+export default new Login_feedback;

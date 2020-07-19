@@ -1,5 +1,7 @@
 'use strict';
 
+import constants from './constants.js';
+
 function Opened_projects() {
 	this.container = document.querySelector( '#projects > div' );
 	this.button_html = '';
@@ -42,6 +44,4 @@ Opened_projects.prototype.fill_buttons = function() {
 	}
 }
 
-/* init
-**************************************************************************/
-var opened_projects = new Opened_projects;
+export default new Opened_projects;

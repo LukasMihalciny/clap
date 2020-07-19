@@ -1,5 +1,11 @@
 'use strict';
+
 const { shell } = require( 'electron' );
+
+import constants from './constants.js';
+import api_requests from './api_requests.js';
+import error_window from './error_window.js';
+import login_feedback from './login_feedback.js';
 
 function Login() {
 	this.dom = login_feedback.get_dom();
@@ -67,10 +73,4 @@ Login.prototype.on_startup_check_localstorage = function() {
 	constants.token = localStorage.getItem( 'token' );
 }
 
-/* init
-**************************************************************************/
-var login = new Login;
-
-/* login on startup if bearer is present in localStorage
-**************************************************************************/
-login.on_startup_check_localstorage();
+export default new Login;

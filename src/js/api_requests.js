@@ -1,5 +1,10 @@
 'use strict';
 
+import constants from './constants.js';
+import login_feedback from './login_feedback.js';
+import error_window from './error_window.js';
+import opened_projects from './opened_projects.js';
+
 function Api_requests() {}
 
 Api_requests.prototype.user_detail = function() {
@@ -103,6 +108,4 @@ Api_requests.prototype.get_assignments = function() {
 	);
 }
 
-/* init
-**************************************************************************/
-var api_requests = new Api_requests;
+export default new Api_requests;

@@ -1,3 +1,4 @@
+bs5 cez moduly
 vypisanie projektov
 request na zacatie trackovania noveho projektu
 request na aktualne trackovany projekt
@@ -33,6 +34,7 @@ subscribe for changelog
 
 =======================================================================
 
+import js files cez moduly
 request na zoznam otvorenych projektov
 feedback pri prihlaseni
 ukladanie prihlasovacich udajov
