@@ -1,10 +1,11 @@
 {
   "name": "Clap",
-  "version": "0.0.08",
+  "version": "0.0.09",
   "description": "Costlocker desktop application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "css": "rimraf src/css/* && node-sass src/scss/main.scss src/css/app.css"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,11 @@
   },
   "homepage": "https://github.com/LukasMihalciny/clap#readme",
   "devDependencies": {
-    "electron": "^8.2.1"
+    "electron": "8.2.1",
+    "node-sass": "4.14.1",
+    "rimraf": "3.0.2"
+  },
+  "dependencies": {
+    "bootstrap": "5.0.0-alpha1"
   }
 }
