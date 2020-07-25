@@ -2,6 +2,9 @@
 
 import login from './login.js';
 
-/* login on startup if bearer is present in localStorage
-**************************************************************************/
-login.on_startup_check_localstorage();
+function clap_initialize() {
+	login.add_listeners();
+	login.on_startup_check_localstorage();
+}
+
+clap_initialize();

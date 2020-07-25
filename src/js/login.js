@@ -2,14 +2,12 @@
 
 const { shell } = require( 'electron' );
 
-import constants from './constants.js';
+import constants from './submodules/constants.js';
 import api_requests from './api_requests.js';
-import error_window from './error_window.js';
-import login_feedback from './login_feedback.js';
+import error_window from './submodules/error_window.js';
 
 function Login() {
-	this.dom = login_feedback.get_dom();
-	this.add_listeners();
+	this.dom = this.get_dom();
 }
 
 Login.prototype.add_listeners = function() {
@@ -40,37 +38,76 @@ Login.prototype.set_bearer = function( token ) {
 	// app name with token transformed into base64
 	var app_name = 'clap' + ':' + token;
 	var bearer = btoa( app_name );
-	constants.token = token;
-	constants.bearer = bearer;
+	constants.set_token_bearer( token, bearer );
 	localStorage.setItem( 'token', token );
 	localStorage.setItem( 'bearer', bearer );
 }
 
 Login.prototype.log_out = function() {
-	constants.token = '';
-	constants.bearer = '';
-	constants.user = {};
+	constants.clear_token_bearer();
+	constants.clear_user();
 	localStorage.removeItem( 'token' );
 	localStorage.removeItem( 'bearer' );
-	login_feedback.out();
+	this.out();
 }
 
 Login.prototype.on_startup_check_localstorage = function() {
+	/* login on startup if bearer is present in localStorage */
+
 	// var bearer = localStorage.getItem( 'bearer' );
 	// if ( bearer === null ) {
-	// 	login_feedback.out();
+	// 	this.out();
 	// 	return;
 	// }
 	// constants.bearer = bearer;
 	// api_requests.user_detail(); <-- this was the main purpose, token is for testing
 	var token = localStorage.getItem( 'token' );
+	var bearer = localStorage.getItem( 'bearer' );
 	if ( token === null ) {
-		login_feedback.out();
+		this.out();
 		return;
 	}
 	this.dom.token_input.value = token;
-	constants.bearer = localStorage.getItem( 'bearer' );
-	constants.token = localStorage.getItem( 'token' );
+	constants.set_token_bearer( token, bearer );
+}
+
+Login.prototype.get_dom = function() {
+	return {
+		open_token_page: document.getElementById( 'open_token_page' ),
+		token_input: document.getElementById( 'token_input' ),
+		log_in_button: document.getElementById( 'log_in_button' ),
+		log_out_button: document.getElementById( 'log_out_button' ),
+		login_name: document.getElementById( 'login_name' ),
+		reload: document.getElementById( 'reload' )
+	};
+}
+
+Login.prototype.in = function() {
+	var user = constants.get_user_data();
+	this.dom.login_name.innerHTML = 'Welcome ' + user.person.first_name + ' ' + user.person.last_name + ', ' + user.company.name;
+	this.hide_all();
+	this.dom.login_name.classList.remove( 'hidden' );
+	this.dom.log_out_button.classList.remove( 'hidden' );
+	this.dom.reload.classList.remove( 'hidden' );
+}
+
+Login.prototype.out = function() {
+	this.hide_all();
+	this.dom.login_name.innerHTML = '';
+	this.dom.token_input.classList.remove( 'hidden' );
+	this.dom.log_in_button.classList.remove( 'hidden' );
+	this.dom.open_token_page.classList.remove( 'hidden' );
+}
+
+Login.prototype.hide_all = function() {
+	for ( var key in this.dom ) {
+		if ( this.dom.hasOwnProperty( key ) ) {
+			var element = this.dom[key];
+			if ( ! element.classList.contains( 'hidden' ) ) {
+				element.classList.add( 'hidden' );
+			}
+		}
+	}
 }
 
 export default new Login;

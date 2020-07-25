@@ -1,9 +1,9 @@
 'use strict';
 
-import constants from './constants.js';
-import login_feedback from './login_feedback.js';
-import error_window from './error_window.js';
-import opened_projects from './opened_projects.js';
+import constants from './submodules/constants.js';
+import login from './login.js';
+import error_window from './submodules/error_window.js';
+import opened_projects from './submodules/opened_projects.js';
 
 function Api_requests() {}
 
@@ -34,13 +34,13 @@ Api_requests.prototype.user_detail = function() {
 		result => {
 			if ( storage.status === 200 ) {
 				// store user
-				constants.user = JSON.parse( result );
-				login_feedback.in();
+				constants.set_user( result );
+				login.in();
 				// reload displayed projects
 				this.reload();
 			} else {
 				// display error
-				login_feedback.out();
+				login.out();
 				var error_object = {
 					my_message: 'Login API failed.',
 					error: result
@@ -89,7 +89,7 @@ Api_requests.prototype.get_assignments = function() {
 		result => {
 			if ( storage.status === 200 ) {
 				// store cl_data
-				constants.cl_data = JSON.parse( result );
+				constants.set_cl_data( result );
 				// display them
 				opened_projects.display_them();
 			} else {
