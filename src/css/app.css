@@ -7157,3 +7157,13 @@ h2, .h2 {
 .half {
   width: 45%;
   display: inline-block; }
+
+.error_window_inside .container {
+  margin-top: 40px;
+  background-color: indigo;
+  padding: 20px; }
+
+.error_window_inside h2, .error_window_inside .h2 {
+  font-size: 1.1rem;
+  text-decoration: underline;
+  margin-bottom: 30px; }

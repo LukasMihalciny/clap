@@ -1,6 +1,3 @@
-obnov css pre error_window
-constants hodnoty ukladaj cez metodu
-vytvor centralny hub toho co sa deje ktory bude zdruzovat moduly
 prerobit dizajn na minimalistickejsi
 vypisanie projektov
 request na zacatie trackovania noveho projektu
@@ -37,6 +34,8 @@ subscribe for changelog
 
 =======================================================================
 
+constants hodnoty ukladaj cez metodu
+obnov css pre error_window
 module refactor
 bs5 cez moduly
 import js files cez moduly
