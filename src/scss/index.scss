@@ -1,14 +1,23 @@
+/* variables
+============================================= */
+$body_bg: #16332D;
+$font_light: #f2f2f2;
+$font_dark: #212529;
+$primary_color: #e9ecef;
+$element_bg: #27594F;
+$nav_bg: #648862;
+
 /* global
 ============================================= */
 body {
-	background-color: #16332D;
-	color: #f2f2f2;
+	background-color: $body_bg;
+	color: $font_light;
 }
 
 /* nav
 ============================================= */
 nav {
-	background-color: #648862;
+	background-color: $element_bg;
 }
 nav #logo {
 	padding: 6px 15px;
@@ -45,7 +54,8 @@ nav .controlls button {
 /* buttons
 ============================================= */
 .btn {
-	background-color: #E0C36E;
+	background-color: $primary_color;
+	border-radius: 0.10rem;
 }
 .btn:hover, .btn:focus {
 	opacity: 0.8;
@@ -54,7 +64,7 @@ nav .controlls button {
 /* currently_tracking
 ============================================= */
 #currently_tracking {
-	background-color: #27594F;
+	background-color: $element_bg;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	padding-top: 8px;
@@ -62,11 +72,10 @@ nav .controlls button {
 }
 #currently_tracking h3 {
 	margin-bottom: 0px;
-}
-
-span {
-	padding-right: 10px;
-	opacity: 0.6;
+	span {
+		padding-right: 10px;
+		opacity: 0.6;
+	}
 }
 
 small {
@@ -82,19 +91,15 @@ h2 {
 /* projects, today
 ============================================= */
 #projects, #today {
-	background-color: #27594F;
+	background-color: $element_bg;
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
 #projects {
-	border-right: 1px solid #E0C36E;
+	border-right: 1px solid $primary_color;
 }
- #today {
-	border-left: 1px solid #E0C36E;
-}
-
-#projects .btn {
-	margin: 6px 4px;
+#today {
+	border-left: 1px solid $primary_color;
 }
 
 #project_list > div {
@@ -104,7 +109,29 @@ h2 {
 #project_list h5 {
 	margin-bottom: 0px;
 }
+#project_list span {
+	padding-right: 10px;
+	opacity: 0.6;
+}
 .half {
 	width: 45%;
 	display: inline-block;
+}
+
+#projects {
+	.project_name {
+		font-weight: 600;
+	}
+	.task_name,
+	.activity_name {
+		font-size: 0.75rem;
+	}
+	.btn {
+		width: 100%;
+		margin-top: 6px;
+		margin-bottom: 6px;
+	}
+	span {
+		color: $font_dark;
+	}
 }

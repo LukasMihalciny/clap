@@ -3,7 +3,7 @@
 import constants from './constants.js';
 
 function Opened_projects() {
-	this.container = document.querySelector( '#projects > div' );
+	this.container = document.querySelector( '#projects > div.row' );
 	this.button_html = '';
 }
 
@@ -31,13 +31,20 @@ Opened_projects.prototype.fill_buttons = function() {
 		// console.log( 'assignments[i]: ' + typeof assignments[i] ); console.log( assignments[i] );
 		var html = this.button_html;
 		// console.log( 'html: ' + typeof html ); console.log( html );
+		if ( assignments[i].names.project_name === null ) {
+			i++; continue;
+		}
 		html = html.replace( '{{person_id}}', assignments[i].assignment.person_id );
 		html = html.replace( '{{project_id}}', assignments[i].assignment.project_id );
 		html = html.replace( '{{activity_id}}', assignments[i].assignment.activity_id );
 		html = html.replace( '{{task_id}}', assignments[i].assignment.task_id );
 		html = html.replace( '{{project_name}}', assignments[i].names.project_name );
 		html = html.replace( '{{activity_name}}', assignments[i].names.activity_name );
-		html = html.replace( '{{task_name}}', assignments[i].names.task_name );
+		if ( assignments[i].names.task_name === null ) {
+			html = html.replace( '{{task_name}}', '' );
+		} else {
+			html = html.replace( '{{task_name}}', assignments[i].names.task_name );
+		}
 		// console.log( 'html: ' + typeof html ); console.log( html );
 		this.container.innerHTML += html;
 	i++;

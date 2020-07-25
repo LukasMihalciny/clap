@@ -1,5 +1,3 @@
-prerobit dizajn na minimalistickejsi
-vypisanie projektov
 request na zacatie trackovania noveho projektu
 request na aktualne trackovany projekt
 zobrazenie aktualne trackovaneho projektu
@@ -7,6 +5,7 @@ odtrackovany cas pre aktualne trackovany projekt
 request na zastavenie trackovania aktualne trackovaneho projektu
 request na zoznam dnes trackovanych projektov
 vypisanie dnesnych
+search medzi trakovatelnymi projektami
 moznost zatvorit do system try
 vizualny feedback navigacie formularom
 klavesove skratky pre navigaciu
@@ -34,6 +33,8 @@ subscribe for changelog
 
 =======================================================================
 
+prerobit dizajn na minimalistickejsi
+vypisanie projektov
 constants hodnoty ukladaj cez metodu
 obnov css pre error_window
 module refactor
