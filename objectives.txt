@@ -1,8 +1,6 @@
-request na zacatie trackovania noveho projektu
-request na aktualne trackovany projekt
-zobrazenie aktualne trackovaneho projektu
 odtrackovany cas pre aktualne trackovany projekt
 request na zastavenie trackovania aktualne trackovaneho projektu
+request na zacatie trackovania noveho projektu
 request na zoznam dnes trackovanych projektov
 vypisanie dnesnych
 search medzi trakovatelnymi projektami
@@ -22,17 +20,22 @@ krajsi vizual - dark mode + neon light blue
 build installation files
 current version
 deliver updates
+linux version on tani pc, mac version on borrowed from work
 start in debugging mode option (password protected)
 download website with patch notes
+vyhod placeholdery pre komponenty
 trello feedback
 keybind settings
 about
+news database, request only for new news, display in modal, stored in localstorage, alert for new but access to old trough menu
 donate btc
 app settings
 subscribe for changelog
 
 =======================================================================
 
+zobrazenie aktualne trackovaneho projektu
+request na aktualne trackovany projekt
 prerobit dizajn na minimalistickejsi
 vypisanie projektov
 constants hodnoty ukladaj cez metodu

@@ -91,7 +91,8 @@ Api_requests.prototype.get_assignments = function() {
 				// store cl_data
 				constants.set_cl_data( result );
 				// display them
-				opened_projects.display_them();
+				opened_projects.display_opened_projects();
+				opened_projects.display_currently_tracking();
 			} else {
 				// display error
 				var error_object = {
