@@ -1,4 +1,4 @@
-odtrackovany cas pre aktualne trackovany projekt
+rozdelit opened_projects
 request na zastavenie trackovania aktualne trackovaneho projektu
 request na zacatie trackovania noveho projektu
 request na zoznam dnes trackovanych projektov
@@ -34,6 +34,7 @@ subscribe for changelog
 
 =======================================================================
 
+odtrackovany cas pre aktualne trackovany projekt
 zobrazenie aktualne trackovaneho projektu
 request na aktualne trackovany projekt
 prerobit dizajn na minimalistickejsi

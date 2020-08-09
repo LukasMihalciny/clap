@@ -4,12 +4,14 @@ import constants from './constants.js';
 
 function Opened_projects() {
 	this.button_container = document.querySelector( '#projects > div.row' );
-	this.button_html = '';
+	this.button_html = ''; // component storage
 	this.tracking_container = document.getElementById( 'currently_tracking' );
-	this.currently_tracking_html = '';
+	this.currently_tracking_html = ''; // component storage
+	this.track_duration_running = false; // state
 }
 
 Opened_projects.prototype.display_opened_projects = function() {
+	// saving component
 	fetch(
 		'../components/opened_project_button.html'
 	).then(
@@ -25,6 +27,7 @@ Opened_projects.prototype.display_opened_projects = function() {
 }
 
 Opened_projects.prototype.fill_buttons = function() {
+	// display all awavilable projects as buttons
 	this.button_container.innerHTML = '';
 	var assignments = constants.get_cl_data().Simple_Tracking_Assignments;
 	var i = 0, len = assignments.length;
@@ -53,6 +56,7 @@ Opened_projects.prototype.fill_buttons = function() {
 }
 
 Opened_projects.prototype.display_currently_tracking = function() {
+	// saving component
 	fetch(
 		'../components/currently_tracking_content.html'
 	).then(
@@ -68,6 +72,7 @@ Opened_projects.prototype.display_currently_tracking = function() {
 }
 
 Opened_projects.prototype.fill_tracking_project = function() {
+	// display tracking of currently running entry
 	this.tracking_container.innerHTML = '';
 	var running_entry = constants.get_cl_data().Simple_Tracking_RunningEntry;
 	var html = this.currently_tracking_html;
@@ -79,33 +84,61 @@ Opened_projects.prototype.fill_tracking_project = function() {
 		html = html.replace( '{{task_name}}', '' );
 		html = html.replace( '{{started}}', '' );
 		html = html.replace( '{{duration}}', '' );
+		this.tracking_container.innerHTML = html;
+		this.track_duration_stop();
 	} else {
-		var started = running_entry.date;
-		var now = new Date();
-		started = new Date( started );
-		console.log( 'now: ' + typeof now ); console.log( now );
-		console.log( 'now.getTime(): ' + typeof now.getTime() ); console.log( now.getTime() );
-		console.log( 'started: ' + typeof started ); console.log( started );
-		console.log( 'started.getTime(): ' + typeof started.getTime() ); console.log( started.getTime() );
-		console.log( 'started - now: ' + typeof started - now ); console.log( started - now );
-		console.log( 'now.toLocaleString(): ' + typeof now.toLocaleString() ); console.log( now.toLocaleString() );
-		console.log( 'started.toLocaleString(): ' + typeof started.toLocaleString() ); console.log( started.toLocaleString() );
-		var diff = now - started;
-		diff = new Date( diff );
-		console.log( 'diff: ' + typeof diff ); console.log( diff );
-		console.log( 'diff.getHours(): ' + typeof diff.getHours() ); console.log( diff.getHours() );
-		console.log( 'diff.getMinutes(): ' + typeof diff.getMinutes() ); console.log( diff.getMinutes() );
-		console.log( 'diff.getSeconds(): ' + typeof diff.getSeconds() ); console.log( diff.getSeconds() );
-		started = started.getHours() + ':' + started.getMinutes() + ':' + started.getSeconds();
 		html = html.replace( '{{project_name}}', running_entry.names.project_name );
 		html = html.replace( '{{description}}', running_entry.description );
 		html = html.replace( '{{client_name}}', running_entry.names.client_name );
 		html = html.replace( '{{activity_name}}', running_entry.names.activity_name );
 		html = html.replace( '{{task_name}}', running_entry.names.task_name );
-		html = html.replace( '{{started}}', started );
-		html = html.replace( '{{duration}}', '00:00:00' );
+		this.tracking_container.innerHTML = html;
+		this.track_duration_start();
 	}
-	this.tracking_container.innerHTML = html;
+}
+
+Opened_projects.prototype.track_duration_start = function() {
+	this.track_duration_running = true;
+	this.track_duration();
+}
+Opened_projects.prototype.track_duration_stop = function() {
+	this.track_duration_running = false;
+}
+Opened_projects.prototype.convert_date_to_utc = function ( date ) {
+	return new Date(
+		date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()
+	);
+}
+Opened_projects.prototype.convert_date_to_readable_format = function( date ) {
+	return ( '0' + date.getHours() ).slice(-2) +
+	':' +
+	( '0' + date.getMinutes() ).slice(-2) +
+	':' +
+	( '0' + date.getSeconds() ).slice(-2);
+}
+Opened_projects.prototype.track_duration = function() {
+	if ( this.track_duration_running === false ) {
+		return;
+	}
+	// calculate timings of currently running entry
+	var started = constants.get_cl_data().Simple_Tracking_RunningEntry.date;
+	started = new Date( started );
+	started = this.convert_date_to_utc( started );
+	var duration = new Date() - started;
+	duration = new Date( duration );
+	duration = this.convert_date_to_utc( duration );
+	// write
+	var started_html = document.getElementById( 'started' );
+	var duration_html = document.getElementById( 'duration' );
+	started_html.innerHTML = this.convert_date_to_readable_format( started );
+	duration_html.innerHTML = this.convert_date_to_readable_format( duration );
+	// repeat every 1 second until stopped
+	setTimeout(
+		function() {
+			this.track_duration();
+		}.bind( this ),
+		1000
+	);
 }
 
 export default new Opened_projects;
