@@ -4,6 +4,7 @@ import constants from './submodules/constants.js';
 import login from './login.js';
 import error_window from './submodules/error_window.js';
 import opened_projects from './submodules/opened_projects.js';
+import running_entry from './submodules/running_entry.js';
 
 function Api_requests() {}
 
@@ -92,7 +93,7 @@ Api_requests.prototype.get_assignments = function() {
 				constants.set_cl_data( result );
 				// display them
 				opened_projects.display_opened_projects();
-				opened_projects.display_currently_tracking();
+				running_entry.display_currently_tracking();
 			} else {
 				// display error
 				var error_object = {
