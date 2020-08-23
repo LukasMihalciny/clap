@@ -1,5 +1,7 @@
 'use strict';
 
+
+// vymaz nepotrebne !!!!!!!
 import constants from './submodules/constants.js';
 import login from './login.js';
 import error_window from './submodules/error_window.js';
@@ -11,9 +13,18 @@ import prepare_request_data from './submodules/prepare_request_data.js';
  * CL documentation https://costlocker.docs.apiary.io/#reference/0/rest-api-v2
 */
 
-function Api_requests() {}
+function Api_requests() {
+	this.response = {};
+	this.result = {};
+}
+Api_requests.prototype.set_response = function( response ) {
+	this.response = response;
+}
+Api_requests.prototype.get_response_status_code = function() {
+	return this.response.status;
+}
 
-Api_requests.prototype.user_detail = function() {
+Api_requests.prototype.user_detail_promise = function() {
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	var requestOptions = {
@@ -21,14 +32,12 @@ Api_requests.prototype.user_detail = function() {
 		headers: headers,
 		redirect: 'follow'
 	};
-	var storage = {};
-	fetch(
+	return fetch(
 		'https://new.costlocker.com/api-public/v2/me',
 		requestOptions
 	).then(
 		response => {
-			// save response headers into storage
-			storage = response;
+			this.set_response( response );
 			return response;
 		}
 	).then(
@@ -38,21 +47,7 @@ Api_requests.prototype.user_detail = function() {
 		}
 	).then(
 		result => {
-			if ( storage.status === 200 ) {
-				// store user
-				constants.set_user( result );
-				login.in();
-				// load displayed projects
-				this.get_assignments();
-			} else {
-				// display error
-				login.out();
-				var error_object = {
-					my_message: 'Login API failed.',
-					error: result
-				};
-				error_window.display( error_object );
-			}
+			return result;
 		}
 	).catch(
 		error => {
@@ -150,8 +145,17 @@ Api_requests.prototype.set_running_entry = function() {
 		}
 	).then(
 		result => {
-			console.log( 'storage: ' + typeof storage ); console.log( storage );
-			console.log( 'result: ' + typeof result ); console.log( result );
+			if ( storage.status === 200 ) {
+				// started tracking project successful
+				this.get_assignments();
+			} else {
+				// display error
+				var error_object = {
+					my_message: 'Tracking project failed.',
+					error: result
+				};
+				error_window.display( error_object );
+			}
 		}
 	).catch(
 		error => {

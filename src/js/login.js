@@ -21,7 +21,25 @@ Login.prototype.log_me_in = function() {
 	} else {
 		// launch request
 		this.set_bearer( token );
-		api_requests.user_detail();
+		api_requests.user_detail_promise().then(
+			result => {
+				if ( api_requests.get_response_status_code() === 200 ) {
+					// store user
+					constants.set_user( result );
+					this.display_logged_in();
+					// load displayed projects
+					api_requests.get_assignments();
+				} else {
+					// display error
+					this.display_logged_out();
+					var error_object = {
+						my_message: 'Login API failed.',
+						error: result
+					};
+					error_window.display( error_object );
+				}
+			}
+		);
 	}
 }
 
@@ -39,7 +57,7 @@ Login.prototype.log_out = function() {
 	constants.clear_user();
 	localStorage.removeItem( 'token' );
 	localStorage.removeItem( 'bearer' );
-	this.out();
+	this.display_logged_out();
 }
 
 Login.prototype.on_startup_check_localstorage = function() {
@@ -55,7 +73,7 @@ Login.prototype.on_startup_check_localstorage = function() {
 	var token = localStorage.getItem( 'token' );
 	var bearer = localStorage.getItem( 'bearer' );
 	if ( token === null ) {
-		this.out();
+		this.display_logged_out();
 		return;
 	}
 	this.dom.token_input.value = token;
@@ -74,7 +92,7 @@ Login.prototype.get_dom = function() {
 	};
 }
 
-Login.prototype.in = function() {
+Login.prototype.display_logged_in = function() {
 	var user = constants.get_user_data();
 	this.dom.login_name.innerHTML = 'Welcome ' + user.person.first_name + ' ' + user.person.last_name + ', ' + user.company.name;
 	this.hide_all();
@@ -82,7 +100,7 @@ Login.prototype.in = function() {
 	this.dom.log_out_button.classList.remove( 'hidden' );
 }
 
-Login.prototype.out = function() {
+Login.prototype.display_logged_out = function() {
 	this.hide_all();
 	this.dom.login_name.innerHTML = '';
 	this.dom.token_input.classList.remove( 'hidden' );
