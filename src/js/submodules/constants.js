@@ -5,6 +5,7 @@ function Constants() {
 	this.bearer = '';
 	this.user = {};
 	this.cl_data = {};
+	this.clicked_target = {};
 }
 
 Constants.prototype.set_token_bearer = function( token, bearer ) {
@@ -34,6 +35,13 @@ Constants.prototype.clear_user = function( request_result ) {
 }
 Constants.prototype.get_user_data = function() {
 	return this.user.data;
+}
+
+Constants.prototype.set_clicked_target = function( target ) {
+	this.clicked_target = target;
+}
+Constants.prototype.get_clicked_target = function() {
+	return this.clicked_target;
 }
 
 export default new Constants;

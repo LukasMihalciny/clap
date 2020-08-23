@@ -5,6 +5,7 @@ import login from './login.js';
 import error_window from './submodules/error_window.js';
 import opened_projects from './submodules/opened_projects.js';
 import running_entry from './submodules/running_entry.js';
+import prepare_request_data from './submodules/prepare_request_data.js';
 
 /**
  * CL documentation https://costlocker.docs.apiary.io/#reference/0/rest-api-v2
@@ -41,8 +42,8 @@ Api_requests.prototype.user_detail = function() {
 				// store user
 				constants.set_user( result );
 				login.in();
-				// reload displayed projects
-				this.reload();
+				// load displayed projects
+				this.get_assignments();
 			} else {
 				// display error
 				login.out();
@@ -58,10 +59,6 @@ Api_requests.prototype.user_detail = function() {
 			console.log( 'error: ' + typeof error ); console.log( error );
 		}
 	);
-}
-
-Api_requests.prototype.reload = function() {
-	this.get_assignments();
 }
 
 Api_requests.prototype.get_assignments = function() {
@@ -129,23 +126,7 @@ Api_requests.prototype.set_running_entry = function() {
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
-	var post_body = {
-		'data': [
-			{
-				'uuid': '1bbd6745-b2c3-436b-9b2f-ccd4cdd6aea6',
-				'description': 'TEST2',
-				'date': '2020-08-22T10:30:26+0000',
-				'duration': null,
-				'assignment': {
-					'person_id': 7778,
-					'project_id': 120226,
-					'activity_id': 15459,
-					'task_id': 422056
-				}
-			}
-		]
-	};
-	post_body = JSON.stringify( post_body );
+	var post_body = prepare_request_data.setting_entry();
 	var requestOptions = {
 		method: 'POST',
 		headers: headers,

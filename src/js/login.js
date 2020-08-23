@@ -1,20 +1,11 @@
 'use strict';
 
-const { shell } = require( 'electron' );
-
 import constants from './submodules/constants.js';
 import api_requests from './api_requests.js';
 import error_window from './submodules/error_window.js';
 
 function Login() {
 	this.dom = this.get_dom();
-}
-
-Login.prototype.add_listeners = function() {
-	this.dom.open_token_page.addEventListener( 'click', function() { shell.openExternal( 'https://new.costlocker.com/api-token' ); } );
-	this.dom.log_in_button.addEventListener( 'click', function() { this.log_me_in() }.bind( this ) );
-	this.dom.log_out_button.addEventListener( 'click', function() { this.log_out() }.bind( this ) );
-	this.dom.reload.addEventListener( 'click', function() { api_requests.reload() }.bind( this ) );
 }
 
 Login.prototype.log_me_in = function() {
@@ -69,6 +60,8 @@ Login.prototype.on_startup_check_localstorage = function() {
 	}
 	this.dom.token_input.value = token;
 	constants.set_token_bearer( token, bearer );
+	// autologin
+	this.log_me_in();
 }
 
 Login.prototype.get_dom = function() {
@@ -77,8 +70,7 @@ Login.prototype.get_dom = function() {
 		token_input: document.getElementById( 'token_input' ),
 		log_in_button: document.getElementById( 'log_in_button' ),
 		log_out_button: document.getElementById( 'log_out_button' ),
-		login_name: document.getElementById( 'login_name' ),
-		reload: document.getElementById( 'reload' )
+		login_name: document.getElementById( 'login_name' )
 	};
 }
 
@@ -88,7 +80,6 @@ Login.prototype.in = function() {
 	this.hide_all();
 	this.dom.login_name.classList.remove( 'hidden' );
 	this.dom.log_out_button.classList.remove( 'hidden' );
-	this.dom.reload.classList.remove( 'hidden' );
 }
 
 Login.prototype.out = function() {

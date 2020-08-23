@@ -19,6 +19,7 @@ krajsi vizual - dark mode + neon light blue
 build installation files
 current version
 deliver updates
+corona cases api
 linux version on tani pc, mac version on borrowed from work
 start in debugging mode option (password protected)
 download website with patch notes
