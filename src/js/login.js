@@ -1,9 +1,9 @@
 'use strict';
 
-import constants from './submodules/constants.js';
+import constants from './constants.js';
 import api_requests from './api_requests.js';
-import error_window from './submodules/error_window.js';
-import opened_projects from './submodules/opened_projects.js';
+import error_window from './error_window.js';
+import opened_projects from './opened_projects.js';
 
 function Login() {
 	this.dom = this.get_dom();

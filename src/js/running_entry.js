@@ -1,7 +1,7 @@
 'use strict';
 
 import constants from './constants.js';
-import api_requests from '../api_requests.js';
+import api_requests from './api_requests.js';
 import error_window from './error_window.js';
 
 function Running_entry() {

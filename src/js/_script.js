@@ -2,10 +2,10 @@
 
 const { shell } = require( 'electron' );
 
-import constants from './submodules/constants.js';
+import constants from './constants.js';
 import login from './login.js';
 import api_requests from './api_requests.js';
-import running_entry from './submodules/running_entry.js';
+import running_entry from './running_entry.js';
 
 function Clap() {
 	this.initialize();
