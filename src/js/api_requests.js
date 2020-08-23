@@ -1,12 +1,6 @@
 'use strict';
 
-
-// vymaz nepotrebne !!!!!!!
 import constants from './submodules/constants.js';
-import login from './login.js';
-import error_window from './submodules/error_window.js';
-import opened_projects from './submodules/opened_projects.js';
-import running_entry from './submodules/running_entry.js';
 import prepare_request_data from './submodules/prepare_request_data.js';
 
 /**
@@ -56,7 +50,7 @@ Api_requests.prototype.user_detail_promise = function() {
 	);
 }
 
-Api_requests.prototype.get_assignments = function() {
+Api_requests.prototype.get_assignments_promise = function() {
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
@@ -79,13 +73,12 @@ Api_requests.prototype.get_assignments = function() {
 		body: post_body
 	};
 	var storage = {};
-	fetch(
+	return fetch(
 		'https://new.costlocker.com/api-public/v1/',
 		requestOptions
 	).then(
 		response => {
-			// save response headers into storage
-			storage = response;
+			this.set_response( response );
 			return response;
 		}
 	).then(
@@ -95,20 +88,7 @@ Api_requests.prototype.get_assignments = function() {
 		}
 	).then(
 		result => {
-			if ( storage.status === 200 ) {
-				// store cl_data
-				constants.set_cl_data( result );
-				// display them
-				opened_projects.display_opened_projects();
-				running_entry.display_currently_tracking();
-			} else {
-				// display error
-				var error_object = {
-					my_message: 'Getting assignments failed.',
-					error: result
-				};
-				error_window.display( error_object );
-			}
+			return result;
 		}
 	).catch(
 		error => {
@@ -117,7 +97,7 @@ Api_requests.prototype.get_assignments = function() {
 	);
 }
 
-Api_requests.prototype.set_running_entry = function() {
+Api_requests.prototype.set_running_entry_promise = function() {
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
@@ -129,13 +109,12 @@ Api_requests.prototype.set_running_entry = function() {
 		body: post_body
 	};
 	var storage = {};
-	fetch(
+	return fetch(
 		'https://new.costlocker.com/api-public/v2/timeentries/',
 		requestOptions
 	).then(
 		response => {
-			// save response headers into storage
-			storage = response;
+			this.set_response( response );
 			return response;
 		}
 	).then(
@@ -145,17 +124,7 @@ Api_requests.prototype.set_running_entry = function() {
 		}
 	).then(
 		result => {
-			if ( storage.status === 200 ) {
-				// started tracking project successful
-				this.get_assignments();
-			} else {
-				// display error
-				var error_object = {
-					my_message: 'Tracking project failed.',
-					error: result
-				};
-				error_window.display( error_object );
-			}
+			return result;
 		}
 	).catch(
 		error => {

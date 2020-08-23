@@ -1,6 +1,8 @@
 'use strict';
 
 import constants from './constants.js';
+import api_requests from '../api_requests.js';
+import error_window from './error_window.js';
 
 function Running_entry() {
 	this.tracking_container = document.getElementById( 'currently_tracking' );
@@ -8,7 +10,25 @@ function Running_entry() {
 	this.track_duration_running = false; // state
 }
 
-Running_entry.prototype.display_currently_tracking = function() {
+Running_entry.prototype.display_currently_tracking	= function() {
+	api_requests.set_running_entry_promise().then(
+		result => {
+			if ( api_requests.get_response_status_code() === 200 ) {
+				// started tracking project successful
+				api_requests.get_assignments_promise();
+			} else {
+				// display error
+				var error_object = {
+					my_message: 'Tracking project failed.',
+					error: result
+				};
+				error_window.display( error_object );
+			}
+		}
+	);
+}
+
+Running_entry.prototype.get_tracking_html = function() {
 	// saving component
 	fetch(
 		'../components/currently_tracking_content.html'

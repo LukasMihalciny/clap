@@ -3,6 +3,7 @@
 import constants from './submodules/constants.js';
 import api_requests from './api_requests.js';
 import error_window from './submodules/error_window.js';
+import opened_projects from './submodules/opened_projects.js';
 
 function Login() {
 	this.dom = this.get_dom();
@@ -18,29 +19,29 @@ Login.prototype.log_me_in = function() {
 			error: 'token: ' + token
 		}
 		error_window.display( error_object );
-	} else {
-		// launch request
-		this.set_bearer( token );
-		api_requests.user_detail_promise().then(
-			result => {
-				if ( api_requests.get_response_status_code() === 200 ) {
-					// store user
-					constants.set_user( result );
-					this.display_logged_in();
-					// load displayed projects
-					api_requests.get_assignments();
-				} else {
-					// display error
-					this.display_logged_out();
-					var error_object = {
-						my_message: 'Login API failed.',
-						error: result
-					};
-					error_window.display( error_object );
-				}
-			}
-		);
+		return;
 	}
+	// launch request
+	this.set_bearer( token );
+	api_requests.user_detail_promise().then(
+		result => {
+			if ( api_requests.get_response_status_code() === 200 ) {
+				// store user
+				constants.set_user( result );
+				this.display_logged_in();
+				// load displayed projects
+				opened_projects.display_opened_projects();
+			} else {
+				// display error
+				this.display_logged_out();
+				var error_object = {
+					my_message: 'Login API failed.',
+					error: result
+				};
+				error_window.display( error_object );
+			}
+		}
+	);
 }
 
 Login.prototype.set_bearer = function( token ) {

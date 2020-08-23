@@ -1,6 +1,9 @@
 'use strict';
 
 import constants from './constants.js';
+import api_requests from '../api_requests.js';
+import error_window from './error_window.js';
+import running_entry from './running_entry.js';
 
 function Opened_projects() {
 	this.button_container = document.querySelector( '#projects > div.row' );
@@ -8,6 +11,27 @@ function Opened_projects() {
 }
 
 Opened_projects.prototype.display_opened_projects = function() {
+	api_requests.get_assignments_promise().then(
+		result => {
+			if ( api_requests.get_response_status_code() === 200 ) {
+				// store cl_data
+				constants.set_cl_data( result );
+				// display them
+				this.get_project_html();
+				running_entry.get_tracking_html();
+			} else {
+				// display error
+				var error_object = {
+					my_message: 'Getting assignments failed.',
+					error: result
+				};
+				error_window.display( error_object );
+			}
+		}
+	);
+}
+
+Opened_projects.prototype.get_project_html = function() {
 	// saving component
 	fetch(
 		'../components/opened_project_button.html'
