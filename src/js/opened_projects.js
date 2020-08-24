@@ -21,11 +21,7 @@ Opened_projects.prototype.display_opened_projects = function() {
 				running_entry.get_tracking_html();
 			} else {
 				// display error
-				var error_object = {
-					my_message: 'Getting assignments failed.',
-					error: result
-				};
-				error_window.display( error_object );
+				error_window.display( result, 'Getting assignments failed.' );
 			}
 		}
 	);

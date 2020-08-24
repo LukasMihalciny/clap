@@ -18,11 +18,7 @@ Running_entry.prototype.display_currently_tracking	= function() {
 				api_requests.get_assignments_promise();
 			} else {
 				// display error
-				var error_object = {
-					my_message: 'Tracking project failed.',
-					error: result
-				};
-				error_window.display( error_object );
+				error_window.display( result, 'Tracking project failed.' );
 			}
 		}
 	);

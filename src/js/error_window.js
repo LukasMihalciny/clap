@@ -6,7 +6,7 @@ const Menu = electron.remote.Menu;
 
 function Error_window() {}
 
-Error_window.prototype.display = function( error_object ) {
+Error_window.prototype.display = function( error_data, message ) {
 	// define new window
 	var wind = new BrowserWindow(
 		{
@@ -21,6 +21,11 @@ Error_window.prototype.display = function( error_object ) {
 	);
 
 	// wind.webContents.openDevTools();
+
+	var error_object = {
+		my_message: message,
+		error: error_data
+	};
 
 	// send error data as string
 	wind.webContents.on(

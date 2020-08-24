@@ -4,7 +4,6 @@ const { shell } = require( 'electron' );
 
 import constants from './constants.js';
 import login from './login.js';
-import api_requests from './api_requests.js';
 import running_entry from './running_entry.js';
 
 function Clap() {

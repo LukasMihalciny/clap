@@ -14,11 +14,7 @@ Login.prototype.log_me_in = function() {
 	// validate
 	if ( token === undefined || token === '' ) {
 		// display error
-		var error_object = {
-			my_message: 'Invalid token.',
-			error: 'token: ' + token
-		}
-		error_window.display( error_object );
+		error_window.display( 'token: ' + token, 'Invalid token.' );
 		return;
 	}
 	// launch request
@@ -32,13 +28,9 @@ Login.prototype.log_me_in = function() {
 				// load displayed projects
 				opened_projects.display_opened_projects();
 			} else {
-				// display error
 				this.display_logged_out();
-				var error_object = {
-					my_message: 'Login API failed.',
-					error: result
-				};
-				error_window.display( error_object );
+				// display error
+				error_window.display( result, 'Login API failed.' );
 			}
 		}
 	);
