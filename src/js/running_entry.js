@@ -4,6 +4,7 @@ import constants from './constants.js';
 import api_requests from './api_requests.js';
 import error_window from './error_window.js';
 import functions_dates from './functions_dates.js';
+import todays_timesheet from './todays_timesheet.js';
 
 function Running_entry() {
 	this.tracking_container = document.getElementById( 'currently_tracking' );
@@ -53,7 +54,7 @@ Running_entry.prototype.refresh_asignments = function() {
 				// display running entry
 				this.show_currently_running();
 				// display todays projects
-				// ...
+				todays_timesheet.display_todays();
 			} else {
 				// display error
 				error_window.display( result, 'Getting assignments failed.' );

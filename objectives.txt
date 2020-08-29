@@ -4,6 +4,8 @@ zobrazit notifikaciu po uspesnom requeste
 zakazat moznost oznacovat text
 current version
 corona cases api
+prerobit component promises
+prerobit get_cl_data na konkretne funkcie
 
 build installation files
 linux version on tani pc, mac version on borrowed from work

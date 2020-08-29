@@ -4,6 +4,7 @@ import constants from './constants.js';
 import api_requests from './api_requests.js';
 import error_window from './error_window.js';
 import running_entry from './running_entry.js';
+import todays_timesheet from './todays_timesheet.js';
 
 function Opened_projects() {
 	this.button_container = document.querySelector( '#projects > div.row' );
@@ -21,7 +22,7 @@ Opened_projects.prototype.display_opened_projects = function() {
 				// display running entry
 				running_entry.show_currently_running();
 				// display todays projects
-				// ...
+				todays_timesheet.display_todays();
 			} else {
 				// display error
 				error_window.display( result, 'Getting assignments failed.' );
