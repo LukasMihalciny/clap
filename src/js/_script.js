@@ -36,7 +36,9 @@ Clap.prototype.click_events = function() {
 		target.classList.contains( 'opened_project_button' ) ||
 		target.parentNode.classList.contains( 'opened_project_button' )
 	) {
-		running_entry.display_currently_tracking();
+		running_entry.start_tracking();
+	} else if ( target.id === 'stop_tracking' ) {
+		running_entry.stop_tracking();
 	}
 }
 

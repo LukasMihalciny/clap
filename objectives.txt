@@ -1,5 +1,3 @@
-request na zastavenie trackovania aktualne trackovaneho projektu
-request na zacatie trackovania noveho projektu
 request na zoznam dnes trackovanych projektov
 vypisanie dnesnych
 search medzi trakovatelnymi projektami
@@ -34,6 +32,8 @@ subscribe for changelog
 
 =======================================================================
 
+request na zastavenie trackovania aktualne trackovaneho projektu
+request na zacatie trackovania noveho projektu
 rozdelit opened_projects
 odtrackovany cas pre aktualne trackovany projekt
 zobrazenie aktualne trackovaneho projektu

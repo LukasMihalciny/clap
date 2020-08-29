@@ -1,6 +1,7 @@
 'use strict';
 
 import constants from './constants.js';
+import functions_dates from './functions_dates.js';
 
 function Prepare_request_data() {}
 
@@ -12,9 +13,7 @@ Prepare_request_data.prototype.setting_entry = function() {
 	var post_body = {
 		'data': [
 			{
-				// 'uuid': 'b0537a3d-ee6e-45d1-8734-2b4cdc00cfb3',
-				// 'description': 'TEST2',
-				'date': this.current_datetime_in_request_format(),
+				'date': functions_dates.current_datetime_in_request_format(),
 				'duration': null,
 				'assignment': {
 					// 'person_id': data.person_id,
@@ -36,21 +35,25 @@ Prepare_request_data.prototype.setting_entry = function() {
 	return JSON.stringify( post_body );
 }
 
-Prepare_request_data.prototype.current_datetime_in_request_format = function() {
-	// '2020-08-23T10:30:26+0000'
-	var now = new Date();
-	return now.getFullYear() +
-	'-' +
-	( '0' + (now.getMonth()+1) ).slice(-2) +
-	'-' +
-	( '0' + now.getDate() ).slice(-2) +
-	'T' +
-	( '0' + now.getHours() ).slice(-2) +
-	':' +
-	( '0' + now.getMinutes() ).slice(-2) +
-	':' +
-	( '0' + now.getSeconds() ).slice(-2) +
-	'+0000';
+Prepare_request_data.prototype.stopping_entry = function() {
+	var running = constants.get_cl_data().Simple_Tracking_RunningEntry;
+	var post_body = {
+		'data': [
+			{
+				'uuid': running.uuid,
+				// 'description': running.description
+				'date': running.date,
+				'duration': functions_dates.get_duration_in_seconds( running.date ),
+				'assignment': running.assignment
+			}
+		]
+	};
+	if ( running.description === null || running.description === 'null' ) {
+		post_body.data[0].description = '';
+	} else {
+		post_body.data[0].description = running.description;
+	}
+	return JSON.stringify( post_body );
 }
 
 export default new Prepare_request_data;

@@ -2,7 +2,9 @@
 
 import constants from './constants.js';
 import api_requests from './api_requests.js';
+import opened_projects from './opened_projects.js';
 import error_window from './error_window.js';
+import functions_dates from './functions_dates.js';
 
 function Running_entry() {
 	this.tracking_container = document.getElementById( 'currently_tracking' );
@@ -10,15 +12,34 @@ function Running_entry() {
 	this.track_duration_running = false; // state
 }
 
-Running_entry.prototype.display_currently_tracking	= function() {
+Running_entry.prototype.start_tracking = function() {
 	api_requests.set_running_entry_promise().then(
 		result => {
 			if ( api_requests.get_response_status_code() === 200 ) {
 				// started tracking project successful
-				api_requests.get_assignments_promise();
+				opened_projects.display_opened_projects();
 			} else {
 				// display error
 				error_window.display( result, 'Tracking project failed.' );
+			}
+		}
+	);
+}
+
+Running_entry.prototype.stop_tracking = function() {
+	var running = constants.get_cl_data().Simple_Tracking_RunningEntry;
+	if ( running === null ) {
+		error_window.display( {}, 'There is no running entry. Nothing to stop.' );
+		return;
+	}
+	api_requests.stop_running_entry_promise().then(
+		result => {
+			if ( api_requests.get_response_status_code() === 200 ) {
+				// success
+				opened_projects.display_opened_projects();
+			} else {
+				// display error
+				error_window.display( result, 'Stopping project failed.' );
 			}
 		}
 	);
@@ -80,15 +101,15 @@ Running_entry.prototype.track_duration = function() {
 	// calculate timings of currently running entry
 	var started = constants.get_cl_data().Simple_Tracking_RunningEntry.date;
 	started = new Date( started );
-	started = this.convert_date_to_utc( started );
+	started = functions_dates.convert_date_to_utc( started );
 	var duration = new Date() - started;
 	duration = new Date( duration );
-	duration = this.convert_date_to_utc( duration );
+	duration = functions_dates.convert_date_to_utc( duration );
 	// write
 	var started_html = document.getElementById( 'started' );
 	var duration_html = document.getElementById( 'duration' );
-	started_html.innerHTML = this.convert_date_to_readable_format( started );
-	duration_html.innerHTML = this.convert_date_to_readable_format( duration );
+	started_html.innerHTML = functions_dates.convert_date_to_readable_format( started );
+	duration_html.innerHTML = functions_dates.convert_date_to_readable_format( duration );
 	// repeat every 1 second until stopped
 	setTimeout(
 		function() {
@@ -96,19 +117,6 @@ Running_entry.prototype.track_duration = function() {
 		}.bind( this ),
 		1000
 	);
-}
-
-Running_entry.prototype.convert_date_to_utc = function ( date ) {
-	return new Date(
-		date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()
-	);
-}
-Running_entry.prototype.convert_date_to_readable_format = function( date ) {
-	return ( '0' + date.getHours() ).slice(-2) +
-	':' +
-	( '0' + date.getMinutes() ).slice(-2) +
-	':' +
-	( '0' + date.getSeconds() ).slice(-2);
 }
 
 export default new Running_entry;
