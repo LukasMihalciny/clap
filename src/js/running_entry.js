@@ -2,7 +2,6 @@
 
 import constants from './constants.js';
 import api_requests from './api_requests.js';
-import opened_projects from './opened_projects.js';
 import error_window from './error_window.js';
 import functions_dates from './functions_dates.js';
 
@@ -17,7 +16,7 @@ Running_entry.prototype.start_tracking = function() {
 		result => {
 			if ( api_requests.get_response_status_code() === 200 ) {
 				// started tracking project successful
-				opened_projects.display_opened_projects();
+				this.refresh_asignments();
 			} else {
 				// display error
 				error_window.display( result, 'Tracking project failed.' );
@@ -36,7 +35,7 @@ Running_entry.prototype.stop_tracking = function() {
 		result => {
 			if ( api_requests.get_response_status_code() === 200 ) {
 				// success
-				opened_projects.display_opened_projects();
+				this.refresh_asignments();
 			} else {
 				// display error
 				error_window.display( result, 'Stopping project failed.' );
@@ -45,7 +44,25 @@ Running_entry.prototype.stop_tracking = function() {
 	);
 }
 
-Running_entry.prototype.get_tracking_html = function() {
+Running_entry.prototype.refresh_asignments = function() {
+	api_requests.get_assignments_promise().then(
+		result => {
+			if ( api_requests.get_response_status_code() === 200 ) {
+				// store cl_data
+				constants.set_cl_data( result );
+				// display running entry
+				this.show_currently_running();
+				// display todays projects
+				// ...
+			} else {
+				// display error
+				error_window.display( result, 'Getting assignments failed.' );
+			}
+		}
+	);
+}
+
+Running_entry.prototype.show_currently_running = function() {
 	// saving component
 	fetch(
 		'../components/currently_tracking_content.html'

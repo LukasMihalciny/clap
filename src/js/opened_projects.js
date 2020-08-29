@@ -18,7 +18,10 @@ Opened_projects.prototype.display_opened_projects = function() {
 				constants.set_cl_data( result );
 				// display them
 				this.get_project_html();
-				running_entry.get_tracking_html();
+				// display running entry
+				running_entry.show_currently_running();
+				// display todays projects
+				// ...
 			} else {
 				// display error
 				error_window.display( result, 'Getting assignments failed.' );
