@@ -1,26 +1,27 @@
 request na zoznam dnes trackovanych projektov
 vypisanie dnesnych
+moznost menit poznamku aktualne trackovanemu
+zobrazit notifikaciu po uspesnom requeste
+zakazat moznost oznacovat text
+current version
+corona cases api
+
+build installation files
+linux version on tani pc, mac version on borrowed from work
+download website with patch notes
 search medzi trakovatelnymi projektami
 moznost zatvorit do system try
+klobalna klavesova skratka pre otvorenie
 vizualny feedback navigacie formularom
 klavesove skratky pre navigaciu
-klobalna klavesova skratka pre otvorenie
 zatvorit po vykonani akcie do system try
-zobrazit notifikaciu po uspesno requeste
 otvorit okno po errore
 najprv zopakovat request
-moznost menit poznamku aktualne trackovanemu
 prihlasovanie cez ucet
 odhlasovanie
-zakazat moznost oznacovat text
 krajsi vizual - dark mode + neon light blue
-build installation files
-current version
 deliver updates
-corona cases api
-linux version on tani pc, mac version on borrowed from work
 start in debugging mode option (password protected)
-download website with patch notes
 vyhod placeholdery pre komponenty
 trello feedback
 keybind settings
