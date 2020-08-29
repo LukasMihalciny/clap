@@ -33,6 +33,16 @@ Functions_dates.prototype.current_datetime_in_request_format = function() {
 	'+0000';
 }
 
+Functions_dates.prototype.current_date_in_request_format = function() {
+	// '2020-08-24'
+	var now = new Date();
+	return now.getFullYear() +
+	'-' +
+	( '0' + (now.getMonth()+1) ).slice(-2) +
+	'-' +
+	( '0' + now.getDate() ).slice(-2);
+}
+
 Functions_dates.prototype.get_duration_in_seconds = function( cl_start ) {
 	var start = new Date( cl_start );
 	start = this.convert_date_to_utc( start );

@@ -54,18 +54,7 @@ Api_requests.prototype.get_assignments_promise = function() {
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
-	var post_body = {
-		'Simple_Projects': {},
-		'Simple_Activities': {},
-		'Simple_Timesheet': {
-			'datef': '2016-11-01',
-			'datet': '2016-11-30'
-		},
-		'Simple_Tracking_Assignments': {},
-		'Simple_Tracking_RunningEntry': {},
-		'Simple_Tags': {}
-	};
-	post_body = JSON.stringify( post_body );
+	var post_body = prepare_request_data.getting_cl_data();
 	var requestOptions = {
 		method: 'POST',
 		headers: headers,

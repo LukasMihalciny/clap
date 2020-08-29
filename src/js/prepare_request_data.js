@@ -5,6 +5,22 @@ import functions_dates from './functions_dates.js';
 
 function Prepare_request_data() {}
 
+Prepare_request_data.prototype.getting_cl_data = function() {
+	var post_body = {
+		'Simple_Projects': {},
+		'Simple_Activities': {},
+		'Simple_Timesheet': {
+			'datef': functions_dates.current_date_in_request_format(),
+			'datet': functions_dates.current_date_in_request_format()
+		},
+		'Simple_Tracking_Assignments': {},
+		'Simple_Tracking_RunningEntry': {},
+		'Simple_Tags': {}
+	};
+	post_body = JSON.stringify( post_body );
+	return post_body;
+}
+
 Prepare_request_data.prototype.setting_entry = function() {
 	var target = constants.get_clicked_target();
 	if ( ! target.classList.contains( 'opened_project_button' ) ) {
