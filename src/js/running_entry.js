@@ -45,12 +45,49 @@ Running_entry.prototype.stop_tracking = function() {
 	);
 }
 
-Running_entry.prototype.change_description = function() {
+Running_entry.prototype.show_description_input = function() {
 	var running = constants.get_cl_data().Simple_Tracking_RunningEntry;
 	if ( running === null ) {
 		error_window.display( {}, 'There is no running entry. Can not change description.' );
 		return;
 	}
+	var buttons = document.querySelectorAll( '#currently_tracking .btn' );
+	var input = document.getElementById( 'description_input' );
+	var i, len = buttons.length;
+	for ( i = 0; i < len; i++ ) {
+		buttons[i].classList.add( 'hidden' );
+	}
+	input.classList.remove( 'hidden' );
+	// MOVE ADDING LISTENER TO _script.js when it is out of component
+	input.addEventListener( 'blur', function(){ this.change_description() }.bind( this ) );
+	input.addEventListener( 'keydown', function(event){ this.change_description(event) }.bind( this ) );
+}
+Running_entry.prototype.hide_description_input = function() {
+	var buttons = document.querySelectorAll( '#currently_tracking .btn' );
+	var input = document.getElementById( 'description_input' );
+	var i, len = buttons.length;
+	for ( i = 0; i < len; i++ ) {
+		buttons[i].classList.remove( 'hidden' );
+	}
+	input.classList.add( 'hidden' );
+	// STOP REMOVING EVENT LISTENER
+	input.removeEventListener( 'blur', function(){ this.change_description() }.bind( this ) );
+	input.removeEventListener( 'keydown', function(event){ this.change_description(event) }.bind( this ) );
+}
+
+Running_entry.prototype.change_description = function(event) {
+	if (
+		event !== undefined // is not blur but keydown
+		&& ( event.keyCode !== 13 && event.keyCode !== 9 ) // neither Enter or Tab was pressed
+	) {
+		return;
+	}
+	this.hide_description_input();
+	return;
+	// CONTINUE HERE
+	// CHECK IF VALUE CHANGED
+	// GATHER VALUE
+	// LAUNCH PROMISE
 	api_requests.change_running_entry_promise().then(
 		result => {
 			if ( api_requests.get_response_status_code() === 200 ) {

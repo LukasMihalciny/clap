@@ -1,3 +1,5 @@
+presun description_change event listener do _script.js a daj ho prec z componentu
+
 moznost menit poznamku aktualne trackovanemu
 zobrazit notifikaciu po uspesnom requeste
 zakazat moznost oznacovat text
