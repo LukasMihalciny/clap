@@ -39,6 +39,8 @@ Clap.prototype.click_events = function() {
 		running_entry.start_tracking();
 	} else if ( target.id === 'stop_tracking' ) {
 		running_entry.stop_tracking();
+	} else if ( target.id === 'change_description' ) {
+		running_entry.change_description();
 	}
 }
 

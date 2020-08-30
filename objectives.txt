@@ -22,7 +22,6 @@ odhlasovanie
 krajsi vizual - dark mode + neon light blue
 deliver updates
 start in debugging mode option (password protected)
-vyhod placeholdery pre komponenty
 trello feedback
 keybind settings
 about
@@ -33,6 +32,7 @@ subscribe for changelog
 
 =======================================================================
 
+vyhod placeholdery pre komponenty
 vypisanie dnesnych
 request na zoznam dnes trackovanych projektov
 request na zastavenie trackovania aktualne trackovaneho projektu

@@ -45,6 +45,26 @@ Running_entry.prototype.stop_tracking = function() {
 	);
 }
 
+Running_entry.prototype.change_description = function() {
+	var running = constants.get_cl_data().Simple_Tracking_RunningEntry;
+	if ( running === null ) {
+		error_window.display( {}, 'There is no running entry. Can not change description.' );
+		return;
+	}
+	api_requests.change_running_entry_promise().then(
+		result => {
+			if ( api_requests.get_response_status_code() === 200 ) {
+				// success
+				// error_window.display( result, 'Changing project succeeded !!' );
+				this.refresh_asignments();
+			} else {
+				// display error
+				error_window.display( result, 'Changing project failed.' );
+			}
+		}
+	);
+}
+
 Running_entry.prototype.refresh_asignments = function() {
 	api_requests.get_assignments_promise().then(
 		result => {

@@ -31,12 +31,7 @@ Prepare_request_data.prototype.setting_entry = function() {
 			{
 				'date': functions_dates.current_datetime_in_request_format(),
 				'duration': null,
-				'assignment': {
-					// 'person_id': data.person_id,
-					// 'project_id': data.project_id,
-					// 'activity_id': data.activity_id,
-					// 'task_id': data.task_id
-				}
+				'assignment': {}
 			}
 		]
 	};
@@ -57,7 +52,6 @@ Prepare_request_data.prototype.stopping_entry = function() {
 		'data': [
 			{
 				'uuid': running.uuid,
-				// 'description': running.description
 				'date': running.date,
 				'duration': functions_dates.get_duration_in_seconds( running.date ),
 				'assignment': running.assignment
@@ -69,6 +63,26 @@ Prepare_request_data.prototype.stopping_entry = function() {
 	} else {
 		post_body.data[0].description = running.description;
 	}
+	return JSON.stringify( post_body );
+}
+
+Prepare_request_data.prototype.changing_entry = function() {
+	var running = constants.get_cl_data().Simple_Tracking_RunningEntry;
+	var post_body = {
+		'data': [
+			{
+				'uuid': running.uuid,
+				'description': 'CLAP',
+				'date': running.date,
+				'assignment': {
+					'person_id': running.assignment.person_id,
+					'project_id': running.assignment.project_id,
+					'activity_id': running.assignment.activity_id,
+					'task_id': running.assignment.task_id
+				}
+			}
+		]
+	};
 	return JSON.stringify( post_body );
 }
 

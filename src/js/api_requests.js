@@ -158,4 +158,40 @@ Api_requests.prototype.stop_running_entry_promise = function() {
 	);
 }
 
+Api_requests.prototype.change_running_entry_promise = function() {
+	var headers = new Headers();
+	headers.append( 'Authorization', constants.get_authorization() );
+	headers.append( 'Content-Type', 'application/json' );
+	var post_body = prepare_request_data.changing_entry();
+	var requestOptions = {
+		method: 'POST',
+		headers: headers,
+		redirect: 'follow',
+		body: post_body
+	};
+	var storage = {};
+	return fetch(
+		'https://new.costlocker.com/api-public/v2/timeentries/',
+		requestOptions
+	).then(
+		response => {
+			this.set_response( response );
+			return response;
+		}
+	).then(
+		response => {
+			// parse response text
+			return response.text();
+		}
+	).then(
+		result => {
+			return result;
+		}
+	).catch(
+		error => {
+			console.log( 'error: ' + typeof error ); console.log( error );
+		}
+	);
+}
+
 export default new Api_requests;
