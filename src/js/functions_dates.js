@@ -52,4 +52,16 @@ Functions_dates.prototype.get_duration_in_seconds = function( cl_start ) {
 	return diff_in_seconds;
 }
 
+Functions_dates.prototype.seconds_to_human_readable = function( seconds ) {
+	// '00:21:49'
+	var hours = Math.floor( seconds / 3600 );
+	var minutes = Math.floor( seconds % 3600 / 60 );
+	var seconds = Math.floor( seconds % 3600 % 60 );
+	return ( '0' + hours ).slice(-2) +
+	':' +
+	( '0' + minutes ).slice(-2) +
+	':' +
+	( '0' + seconds ).slice(-2);
+}
+
 export default new Functions_dates;

@@ -1,6 +1,7 @@
 'use strict';
 
 import constants from './constants.js';
+import functions_dates from './functions_dates.js';
 
 function Todays_timesheet() {
 	this.todays_timesheet_html = ''; // component container
@@ -24,9 +25,43 @@ Todays_timesheet.prototype.display_todays = function() {
 
 Todays_timesheet.prototype.fill_timesheet = function() {
 	var timesheet = constants.get_cl_data().Simple_Timesheet;
-	var html = this.todays_timesheet_html;
-	console.log( 'timesheet: ' + typeof timesheet ); console.log( timesheet );
-	console.log( 'html: ' + typeof html ); console.log( html );
+	var wrap = document.getElementById( 'project_list' );
+	var total_wrap = document.getElementById( 'seconds_total' );
+	var html = '';
+	var seconds_total = 0;
+	var i, len = timesheet.length;
+	for ( i = 0; i < len; i++ ) {
+		html += this.todays_timesheet_html;
+		html = html.replace( '{{project_name}}', this.get_project_name_by_id( timesheet[i].project ) );
+		html = html.replace( '{{description}}', timesheet[i].description );
+		html = html.replace( '{{activity_name}}', this.get_activity_name_by_id( timesheet[i].activity ) );
+		html = html.replace( '{{task_name}}', timesheet[i].task_name );
+		html = html.replace( '{{duration}}', functions_dates.seconds_to_human_readable( timesheet[i].interval ) );
+		seconds_total += timesheet[i].interval;
+	}
+	wrap.innerHTML = html;
+	total_wrap.innerHTML = functions_dates.seconds_to_human_readable( seconds_total );
+}
+
+Todays_timesheet.prototype.get_project_name_by_id = function( id ) {
+	var projects = constants.get_cl_data().Simple_Projects;
+	var i, len = projects.length;
+	for ( i = 0; i < len; i++ ) {
+		if ( projects[i].id === id ) {
+			return projects[i].name;
+		}
+	}
+	return 'didnt find project ' + id;
+}
+Todays_timesheet.prototype.get_activity_name_by_id = function( id ) {
+	var activities = constants.get_cl_data().Simple_Activities;
+	var i, len = activities.length;
+	for ( i = 0; i < len; i++ ) {
+		if ( activities[i].id === id ) {
+			return activities[i].name;
+		}
+	}
+	return 'didnt find activity ' + id;
 }
 
 export default new Todays_timesheet;
