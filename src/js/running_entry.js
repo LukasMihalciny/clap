@@ -7,7 +7,9 @@ import functions_dates from './functions_dates.js';
 import todays_timesheet from './todays_timesheet.js';
 
 function Running_entry() {
-	this.tracking_container = document.getElementById( 'currently_tracking' );
+	this.tracking_holder = document.getElementById( 'tracking_holder' );
+	this.buttons = document.querySelectorAll( '#currently_tracking .btn' );
+	this.input = document.getElementById( 'description_input' );
 	this.currently_tracking_html = ''; // component storage
 	this.track_duration_running = false; // state
 }
@@ -51,48 +53,37 @@ Running_entry.prototype.show_description_input = function() {
 		error_window.display( {}, 'There is no running entry. Can not change description.' );
 		return;
 	}
-	var buttons = document.querySelectorAll( '#currently_tracking .btn' );
-	var input = document.getElementById( 'description_input' );
-	var i, len = buttons.length;
+	var i, len = this.buttons.length;
 	for ( i = 0; i < len; i++ ) {
-		buttons[i].classList.add( 'hidden' );
+		this.buttons[i].classList.add( 'hidden' );
 	}
-	input.classList.remove( 'hidden' );
-	// MOVE ADDING LISTENER TO _script.js when it is out of component
-	input.addEventListener( 'blur', function(){ this.change_description() }.bind( this ) );
-	input.addEventListener( 'keydown', function(event){ this.change_description(event) }.bind( this ) );
+	this.input.classList.remove( 'hidden' );
+	this.input.value = constants.get_running_description();
+	this.input.focus();
 }
 Running_entry.prototype.hide_description_input = function() {
-	var buttons = document.querySelectorAll( '#currently_tracking .btn' );
-	var input = document.getElementById( 'description_input' );
-	var i, len = buttons.length;
+	var i, len = this.buttons.length;
 	for ( i = 0; i < len; i++ ) {
-		buttons[i].classList.remove( 'hidden' );
+		this.buttons[i].classList.remove( 'hidden' );
 	}
-	input.classList.add( 'hidden' );
-	// STOP REMOVING EVENT LISTENER
-	input.removeEventListener( 'blur', function(){ this.change_description() }.bind( this ) );
-	input.removeEventListener( 'keydown', function(event){ this.change_description(event) }.bind( this ) );
+	this.input.classList.add( 'hidden' );
 }
 
 Running_entry.prototype.change_description = function(event) {
-	if (
-		event !== undefined // is not blur but keydown
-		&& ( event.keyCode !== 13 && event.keyCode !== 9 ) // neither Enter or Tab was pressed
-	) {
+	if ( event.keyCode === 27 ) {
+		// cancel on Esc
+		this.hide_description_input();
+		return;
+	} else if ( event.keyCode !== 13 && event.keyCode !== 9 ) {
+		// do nothing if not Enter or Tab
 		return;
 	}
+	constants.set_running_description( this.input.value );
 	this.hide_description_input();
-	return;
-	// CONTINUE HERE
-	// CHECK IF VALUE CHANGED
-	// GATHER VALUE
-	// LAUNCH PROMISE
 	api_requests.change_running_entry_promise().then(
 		result => {
 			if ( api_requests.get_response_status_code() === 200 ) {
 				// success
-				// error_window.display( result, 'Changing project succeeded !!' );
 				this.refresh_asignments();
 			} else {
 				// display error
@@ -138,7 +129,7 @@ Running_entry.prototype.show_currently_running = function() {
 
 Running_entry.prototype.fill_tracking_project = function() {
 	// display tracking of currently running entry
-	this.tracking_container.innerHTML = '';
+	this.tracking_holder.innerHTML = '';
 	var running_entry = constants.get_cl_data().Simple_Tracking_RunningEntry;
 	var html = this.currently_tracking_html;
 	if ( running_entry === null ) {
@@ -149,7 +140,7 @@ Running_entry.prototype.fill_tracking_project = function() {
 		html = html.replace( '{{task_name}}', '' );
 		html = html.replace( '{{started}}', '' );
 		html = html.replace( '{{duration}}', '' );
-		this.tracking_container.innerHTML = html;
+		this.tracking_holder.innerHTML = html;
 		this.track_duration_stop();
 	} else {
 		html = html.replace( '{{project_name}}', running_entry.names.project_name );
@@ -157,9 +148,10 @@ Running_entry.prototype.fill_tracking_project = function() {
 		html = html.replace( '{{client_name}}', running_entry.names.client_name );
 		html = html.replace( '{{activity_name}}', running_entry.names.activity_name );
 		html = html.replace( '{{task_name}}', running_entry.names.task_name );
-		this.tracking_container.innerHTML = html;
+		this.tracking_holder.innerHTML = html;
 		this.track_duration_start();
 	}
+	constants.set_running_description( running_entry.description );
 }
 
 Running_entry.prototype.track_duration_start = function() {

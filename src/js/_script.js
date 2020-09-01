@@ -12,12 +12,25 @@ function Clap() {
 
 Clap.prototype.initialize = function() {
 	// what to run after startup
-	this.event_holder = document.getElementById( 'event_holder' );
-	this.event_holder.addEventListener(
+	var event_holder = document.getElementById( 'event_holder' );
+	event_holder.addEventListener(
 		'click',
 		function( event ) {
 			constants.set_clicked_target( event.target );
-			this.click_events()
+			this.click_events();
+		}.bind( this )
+	);
+	var description_input = running_entry.input;
+	description_input.addEventListener(
+		'blur',
+		function(){
+			running_entry.hide_description_input();
+		}.bind( this )
+	);
+	description_input.addEventListener(
+		'keydown',
+		function(event){
+			running_entry.change_description(event);
 		}.bind( this )
 	);
 	login.on_startup_check_localstorage();

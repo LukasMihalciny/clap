@@ -72,7 +72,7 @@ Prepare_request_data.prototype.changing_entry = function() {
 		'data': [
 			{
 				'uuid': running.uuid,
-				'description': 'CLAP',
+				'description': constants.get_running_description(),
 				'date': running.date,
 				'assignment': {
 					'person_id': running.assignment.person_id,

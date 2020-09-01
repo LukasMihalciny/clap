@@ -1,21 +1,14 @@
-<div class="col-sm-12">
-	<h2>Currently tracking:</h2>
-</div>
-<div class="col-md-6">
-	<h3>{{project_name}} <small>{{description}}</small></h3>
-	<small>{{client_name}} - {{activity_name}} - </small>{{task_name}}
-</div>
-<div class="col-md-1">
-	<small>Started:</small>
-	<p id="started"></p>
-</div>
-<div class="col-md-1">
-	<small>Duration:</small>
-	<p id="duration"></p>
-</div>
-<!-- MOVE THIS OUT OF COMPONENT -->
-<div class="col-md-4 text-right">
-	<input id="description_input" type="text" name="description_input" class="hidden" placeholder="Enter a description...">
-	<button id="change_description" class="btn">Description</button>
-	<button id="stop_tracking" class="btn">Stop tracking</button>
+<div class="row">
+	<div class="col-md-8">
+		<h3>{{project_name}} <small>{{description}}</small></h3>
+		<small>{{client_name}} - {{activity_name}} - </small>{{task_name}}
+	</div>
+	<div class="col-md-2">
+		<small>Started:</small>
+		<p id="started"></p>
+	</div>
+	<div class="col-md-2">
+		<small>Duration:</small>
+		<p id="duration"></p>
+	</div>
 </div>

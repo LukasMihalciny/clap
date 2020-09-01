@@ -6,6 +6,7 @@ function Constants() {
 	this.user = {};
 	this.cl_data = {};
 	this.clicked_target = {};
+	this.running_description = '';
 }
 
 Constants.prototype.set_token_bearer = function( token, bearer ) {
@@ -42,6 +43,13 @@ Constants.prototype.set_clicked_target = function( target ) {
 }
 Constants.prototype.get_clicked_target = function() {
 	return this.clicked_target;
+}
+
+Constants.prototype.set_running_description = function( string ) {
+	this.running_description = string;
+}
+Constants.prototype.get_running_description = function() {
+	return this.running_description;
 }
 
 export default new Constants;

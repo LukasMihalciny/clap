@@ -30,18 +30,31 @@
 	<div class="container">
 
 		<div id="currently_tracking" class="row">
+			<div class="col-sm-12">
+				<h2>Currently tracking:</h2>
+			</div>
+			<div id="tracking_holder" class="col-md-8">
+				<!-- insert currently_tracking_content.html -->
+			</div>
+			<div class="col-md-4 text-right">
+				<input id="description_input" type="text" name="description_input" class="hidden" placeholder="Enter a description...">
+				<button id="change_description" class="btn">Description</button>
+				<button id="stop_tracking" class="btn">Stop tracking</button>
+			</div>
 		</div>
 
 		<div id="board" class="row">
 			<div id="projects" class="col-md-7">
 				<h2>Track project:</h2>
 				<div class="row">
+					<!-- insert opened_project_button.html -->
 				</div>
 			</div>
 			<div id="today" class="col-md-5">
 				<h2>Today:</h2>
 				<small>Total: <span id="seconds_total">02:21:33</span></small>
 				<div id="project_list" class="row">
+					<!-- insert todays_timesheet_entry.html -->
 				</div>
 			</div>
 		</div>
