@@ -1,5 +1,4 @@
 zobrazit notifikaciu po uspesnom requeste
-zakazat moznost oznacovat text
 about - current version, available version
 corona cases api
 prerobit component promises
@@ -32,6 +31,7 @@ subscribe for changelog
 
 =======================================================================
 
+zakazat moznost oznacovat text
 moznost zatvorit do system tray
 po otvoreni noveho okna crashne menu
 system menu
