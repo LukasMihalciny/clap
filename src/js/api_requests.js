@@ -3,10 +3,6 @@
 import constants from './constants.js';
 import prepare_request_data from './prepare_request_data.js';
 
-/**
- * CL documentation https://costlocker.docs.apiary.io/#reference/0/rest-api-v2
-*/
-
 function Api_requests() {
 	this.response = {};
 	this.result = {};

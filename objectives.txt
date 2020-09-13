@@ -1,6 +1,3 @@
-presun description_change event listener do _script.js a daj ho prec z componentu
-
-moznost menit poznamku aktualne trackovanemu
 zobrazit notifikaciu po uspesnom requeste
 zakazat moznost oznacovat text
 current version
@@ -11,6 +8,8 @@ prerobit get_cl_data na konkretne funkcie
 build installation files
 linux version on tani pc, mac version on borrowed from work
 download website with patch notes
+celkovy plan UX/IU
+favourites? stared? menit dnesne/trackovane?
 search medzi trakovatelnymi projektami
 moznost zatvorit do system try
 klobalna klavesova skratka pre otvorenie
@@ -34,6 +33,10 @@ subscribe for changelog
 
 =======================================================================
 
+po otvoreni noveho okna crashne menu
+system menu
+moznost menit poznamku aktualne trackovanemu
+presun description_change event listener do _script.js a daj ho prec z componentu
 vyhod placeholdery pre komponenty
 vypisanie dnesnych
 request na zoznam dnes trackovanych projektov

@@ -2,7 +2,6 @@
 const path = require( 'path' );
 const electron = require('electron');
 const BrowserWindow = electron.remote.BrowserWindow;
-const Menu = electron.remote.Menu;
 
 function Error_window() {}
 
@@ -37,10 +36,6 @@ Error_window.prototype.display = function( error_data, message ) {
 			);
 		}
 	);
-
-	// disable menu
-	var menu = Menu.buildFromTemplate( [] );
-	Menu.setApplicationMenu( menu );
 
 	// how to close window
 	wind.on( 'close', function() { wind = null } );
