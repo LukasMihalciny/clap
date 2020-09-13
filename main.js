@@ -1,4 +1,8 @@
-const { app, BrowserWindow, Menu, shell } = require('electron')
+const { app, BrowserWindow, Menu, shell, Tray } = require('electron')
+const path = require( 'path' )
+
+// store window in variable to be able to restore it from system tray
+let main_window;
 
 function createWindow () {
 	// Create the browser window.
@@ -7,7 +11,12 @@ function createWindow () {
 		height: 900,
 		webPreferences: {
 			nodeIntegration: true
-		}
+		},
+		icon: path.join( __dirname, 'src/images/cat_2.ico' ),
+		transparent: true,
+		resizable: false,
+		center: true,
+		// thickFrame: true,
 	})
 
 	// and load the index.html of the app.
@@ -143,12 +152,37 @@ function createWindow () {
 	const menu = Menu.buildFromTemplate(template)
 	Menu.setApplicationMenu(menu)
 
+	// tray
+	let tray = null;
+	tray = createTray();
+	win.on(
+		'minimize',
+		function( event ) {
+			event.preventDefault();
+			win.hide();
+			// tray = createTray();
+		}
+	);
+	win.on(
+		'restore',
+		function( event ) {
+			win.show();
+			// tray.destroy();
+		}
+	);
+
+	// store in var
+	return win;
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(createWindow)
+app.whenReady().then(
+	() => {
+		main_window = createWindow();
+	}
+)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -169,3 +203,31 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+function createTray() {
+	let appIcon = new Tray( path.join( __dirname, 'src/images/cat_2.ico' ) );
+	const contextMenu = Menu.buildFromTemplate(
+		[
+			{
+				label: 'Show window', click: function () {
+					main_window.show();
+				}
+			},
+			{
+				label: 'Exit', click: function () {
+					app.isQuiting = true;
+					app.quit();
+				}
+			}
+		]
+	);
+	appIcon.on(
+		'double-click',
+		function (event) {
+			main_window.show();
+		}
+	);
+	appIcon.setToolTip( 'Clap' );
+	appIcon.setContextMenu( contextMenu );
+	return appIcon;
+}

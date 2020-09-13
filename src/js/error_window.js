@@ -15,7 +15,8 @@ Error_window.prototype.display = function( error_data, message ) {
 			alwaysOnTop: true,
 			webPreferences: {
 				nodeIntegration: true
-			}
+			},
+			autoHideMenuBar: true,
 		}
 	);
 

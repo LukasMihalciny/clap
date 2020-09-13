@@ -1,21 +1,21 @@
 zobrazit notifikaciu po uspesnom requeste
 zakazat moznost oznacovat text
-current version
+about - current version, available version
 corona cases api
 prerobit component promises
 prerobit get_cl_data na konkretne funkcie
+search medzi trakovatelnymi projektami
 
 build installation files
 linux version on tani pc, mac version on borrowed from work
 download website with patch notes
 celkovy plan UX/IU
 favourites? stared? menit dnesne/trackovane?
-search medzi trakovatelnymi projektami
-moznost zatvorit do system try
+continue project
 klobalna klavesova skratka pre otvorenie
 vizualny feedback navigacie formularom
 klavesove skratky pre navigaciu
-zatvorit po vykonani akcie do system try
+zatvorit po vykonani akcie do system tray
 otvorit okno po errore
 najprv zopakovat request
 prihlasovanie cez ucet
@@ -25,7 +25,6 @@ deliver updates
 start in debugging mode option (password protected)
 trello feedback
 keybind settings
-about
 news database, request only for new news, display in modal, stored in localstorage, alert for new but access to old trough menu
 donate btc
 app settings
@@ -33,6 +32,7 @@ subscribe for changelog
 
 =======================================================================
 
+moznost zatvorit do system tray
 po otvoreni noveho okna crashne menu
 system menu
 moznost menit poznamku aktualne trackovanemu
