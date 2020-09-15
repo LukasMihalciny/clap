@@ -4,6 +4,7 @@ import constants from './constants.js';
 import api_requests from './api_requests.js';
 import error_window from './error_window.js';
 import opened_projects from './opened_projects.js';
+import corona from './corona.js';
 
 function Login() {
 	this.dom = this.get_dom();
@@ -54,15 +55,8 @@ Login.prototype.log_out = function() {
 }
 
 Login.prototype.on_startup_check_localstorage = function() {
+	corona.initialize_corona();
 	/* login on startup if bearer is present in localStorage */
-
-	// var bearer = localStorage.getItem( 'bearer' );
-	// if ( bearer === null ) {
-	// 	this.out();
-	// 	return;
-	// }
-	// constants.bearer = bearer;
-	// api_requests.user_detail(); <-- this was the main purpose, token is for testing
 	var token = localStorage.getItem( 'token' );
 	var bearer = localStorage.getItem( 'bearer' );
 	if ( token === null ) {

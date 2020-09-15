@@ -1,6 +1,4 @@
-zobrazit notifikaciu po uspesnom requeste
 about - current version, available version
-corona cases api
 prerobit component promises
 prerobit get_cl_data na konkretne funkcie
 search medzi trakovatelnymi projektami
@@ -31,6 +29,8 @@ subscribe for changelog
 
 =======================================================================
 
+corona cases api
+zobrazit notifikaciu po uspesnom requeste
 zakazat moznost oznacovat text
 moznost zatvorit do system tray
 po otvoreni noveho okna crashne menu

@@ -105,7 +105,7 @@ Running_entry.prototype.refresh_asignments = function() {
 				todays_timesheet.display_todays();
 			} else {
 				// display error
-				error_window.display( result, 'Getting assignments failed.' );
+				error_window.display( result, 'Getting asignments failed.' );
 			}
 		}
 	);
