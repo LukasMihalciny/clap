@@ -19,8 +19,8 @@ function createWindow () {
 		// thickFrame: true,
 	})
 
-	// and load the index.html of the app.
-	win.loadFile('src/pages/index.html')
+	// and load the main_window.html of the app.
+	win.loadFile('src/pages/main_window.html')
 
 	// Open the DevTools.
 	win.webContents.openDevTools()
@@ -54,6 +54,12 @@ function createWindow () {
 				// 		// await shell.openExternal('https://costlocker.docs.apiary.io/#reference/0/rest-api-v2')
 				// 	}
 				// },
+				{
+					label: 'About',
+					click: async () => {
+						await create_about_window();
+					}
+				},
 				{
 					label: 'Contact author',
 					click: async () => {
@@ -236,4 +242,26 @@ function createTray() {
 	appIcon.setToolTip( 'Clap' );
 	appIcon.setContextMenu( contextMenu );
 	return appIcon;
+}
+
+// about window
+function create_about_window() {
+	// define new window
+	var wind = new BrowserWindow(
+		{
+			width: 600,
+			height: 450,
+			frame: true,
+			alwaysOnTop: true,
+			webPreferences: {
+				nodeIntegration: true
+			},
+			autoHideMenuBar: true,
+		}
+	);
+	// how to close window
+	wind.on( 'close', function() { wind = null } );
+	// set html file path and open window
+	wind.loadFile('src/pages/about_window.html')
+	wind.show();
 }
