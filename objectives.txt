@@ -1,11 +1,10 @@
-fixnut null v trackovanom a today
 about - current version, available version
-prerobit component promises
-prerobit get_cl_data na konkretne funkcie
 
 build installation files
 linux version on tani pc, mac version on borrowed from work
 download website with patch notes
+prerobit get_cl_data na konkretne funkcie
+prerobit component promises
 celkovy plan UX/IU
 favourites? stared? menit dnesne/trackovane?
 continue project
@@ -29,6 +28,7 @@ subscribe for changelog
 
 =======================================================================
 
+fixnut null v trackovanom a today
 search medzi trakovatelnymi projektami
 prerobit api requesty
 corona cases api

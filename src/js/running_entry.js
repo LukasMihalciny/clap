@@ -144,10 +144,18 @@ Running_entry.prototype.fill_tracking_project = function() {
 		this.track_duration_stop();
 	} else {
 		html = html.replace( '{{project_name}}', running_entry.names.project_name );
-		html = html.replace( '{{description}}', running_entry.description );
 		html = html.replace( '{{client_name}}', running_entry.names.client_name );
 		html = html.replace( '{{activity_name}}', running_entry.names.activity_name );
-		html = html.replace( '{{task_name}}', running_entry.names.task_name );
+		if ( running_entry.description === null ) {
+			html = html.replace( '{{description}}', '' );
+		} else {
+			html = html.replace( '{{description}}', running_entry.description );
+		}
+		if ( running_entry.names.task_name === null ) {
+			html = html.replace( '{{task_name}}', '' );
+		} else {
+			html = html.replace( '{{task_name}}', running_entry.names.task_name );
+		}
 		this.tracking_holder.innerHTML = html;
 		this.track_duration_start();
 	}

@@ -35,8 +35,12 @@ Todays_timesheet.prototype.fill_timesheet = function() {
 		html = html.replace( '{{project_name}}', this.get_project_name_by_id( timesheet[i].project ) );
 		html = html.replace( '{{description}}', timesheet[i].description );
 		html = html.replace( '{{activity_name}}', this.get_activity_name_by_id( timesheet[i].activity ) );
-		html = html.replace( '{{task_name}}', timesheet[i].task_name );
 		html = html.replace( '{{duration}}', functions_dates.seconds_to_human_readable( timesheet[i].interval ) );
+		if ( timesheet[i].task_name === null ) {
+			html = html.replace( '{{task_name}}', '' );
+		} else {
+			html = html.replace( '{{task_name}}', timesheet[i].task_name );
+		}
 		seconds_total += timesheet[i].interval;
 	}
 	wrap.innerHTML = html;
