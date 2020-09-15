@@ -7,7 +7,7 @@ Notifications.prototype.run_corona_notification = function( message ) {
 		'CLAP: New Corona cases in Slovakia',
 		{
 			body: message,
-			icon: '../images/cat_2.ico',
+			icon: '../images/bat_1.ico',
 		}
 	);
 }

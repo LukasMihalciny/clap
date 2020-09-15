@@ -1,4 +1,4 @@
-search medzi trakovatelnymi projektami
+fixnut null v trackovanom a today
 about - current version, available version
 prerobit component promises
 prerobit get_cl_data na konkretne funkcie
@@ -29,6 +29,7 @@ subscribe for changelog
 
 =======================================================================
 
+search medzi trakovatelnymi projektami
 prerobit api requesty
 corona cases api
 zobrazit notifikaciu po uspesnom requeste

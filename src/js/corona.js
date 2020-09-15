@@ -16,7 +16,7 @@ Corona.prototype.get_result = function() {
 }
 
 Corona.prototype.initialize_corona = function() {
-	var delay = Math.round( ( Math.random() * 100 ) + 20 ) * 1000;
+	var delay = Math.round( ( Math.random() * 180 ) + 120 ) * 1000;
 	setTimeout(
 		function(){ this.run_corona() }.bind( this ),
 		delay

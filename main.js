@@ -12,7 +12,7 @@ function createWindow () {
 		webPreferences: {
 			nodeIntegration: true
 		},
-		icon: path.join( __dirname, 'src/images/cat_2.ico' ),
+		icon: path.join( __dirname, 'src/images/bat_1.ico' ),
 		transparent: true,
 		resizable: false,
 		center: true,
@@ -211,7 +211,7 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 function createTray() {
-	let appIcon = new Tray( path.join( __dirname, 'src/images/cat_2.ico' ) );
+	let appIcon = new Tray( path.join( __dirname, 'src/images/bat_1.ico' ) );
 	const contextMenu = Menu.buildFromTemplate(
 		[
 			{

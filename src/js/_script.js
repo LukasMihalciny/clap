@@ -5,6 +5,7 @@ const { shell } = require( 'electron' );
 import constants from './constants.js';
 import login from './login.js';
 import running_entry from './running_entry.js';
+import opened_projects from './opened_projects.js';
 
 function Clap() {
 	this.initialize();
@@ -29,8 +30,15 @@ Clap.prototype.initialize = function() {
 	);
 	description_input.addEventListener(
 		'keydown',
-		function(event){
-			running_entry.change_description(event);
+		function( event ){
+			running_entry.change_description( event );
+		}.bind( this )
+	);
+	var filter_input = opened_projects.filter_input;
+	filter_input.addEventListener(
+		'keyup',
+		function( event ) {
+			opened_projects.filter_buttons( event );
 		}.bind( this )
 	);
 	login.on_startup_check_localstorage();

@@ -72,6 +72,24 @@ nav .controlls button {
 	opacity: 0.8;
 }
 
+/* inputs
+============================================= */
+input[type="text"] {
+	width: 95%;
+	padding: 6px;
+	border: none;
+	background-color: $primary_color;
+	color: $font_dark;
+	margin: auto;
+	display: inherit;
+	border: 2px solid $element_bg;
+	transition: 0.3s ease;
+	&:focus {
+		border: 2px solid $primary_color;
+		outline-color: $body_bg;
+	}
+}
+
 /* currently_tracking
 ============================================= */
 #currently_tracking {
@@ -89,13 +107,6 @@ nav .controlls button {
 			padding-right: 10px;
 			opacity: 0.6;
 		}
-	}
-	input {
-		width: 95%;
-		padding: 6px;
-		border: none;
-		background-color: $primary_color;
-		color: $font_dark;
 	}
 }
 
@@ -151,4 +162,11 @@ h2 {
 	span {
 		color: $font_dark;
 	}
+	.title_row {
+		margin-bottom: 12px;
+	}
+}
+
+#projects_wrap > div.hidden {
+	display: none;
 }

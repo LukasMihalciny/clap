@@ -7,8 +7,9 @@ import running_entry from './running_entry.js';
 import todays_timesheet from './todays_timesheet.js';
 
 function Opened_projects() {
-	this.button_container = document.querySelector( '#projects > div.row' );
+	this.button_container = document.getElementById( 'projects_wrap' );
 	this.button_html = ''; // component storage
+	this.filter_input = document.getElementById( 'filter_projects' );
 }
 
 Opened_projects.prototype.display_opened_projects = function() {
@@ -70,9 +71,30 @@ Opened_projects.prototype.fill_buttons = function() {
 		} else {
 			html = html.replace( '{{task_name}}', assignments[i].names.task_name );
 		}
+		var filter_string = [ assignments[i].names.project_name, assignments[i].names.activity_name, assignments[i].names.task_name ].join( ' ' ).toLowerCase();
+		html = html.replace( '{{search_values}}', filter_string );
 		// console.log( 'html: ' + typeof html ); console.log( html );
 		this.button_container.innerHTML += html;
 	i++;
+	}
+}
+
+Opened_projects.prototype.filter_buttons = function( event ) {
+	var filter_string = event.target.value.toLowerCase();
+	var buttons = document.getElementsByClassName( 'opened_project_button' );
+	var i, len = buttons.length;
+	for ( i = 0; i < len; i++ ) {
+		var search_values = buttons[i].dataset.search_values;
+		var column = buttons[i].parentNode;
+		if ( search_values.indexOf( filter_string ) > -1 ) {
+			if ( column.classList.contains( 'hidden' ) ) {
+				column.classList.remove( 'hidden' );
+			}
+		} else {
+			if ( ! column.classList.contains( 'hidden' ) ) {
+				column.classList.add( 'hidden' );
+			}
+		}
 	}
 }
 
