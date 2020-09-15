@@ -1,7 +1,7 @@
+search medzi trakovatelnymi projektami
 about - current version, available version
 prerobit component promises
 prerobit get_cl_data na konkretne funkcie
-search medzi trakovatelnymi projektami
 
 build installation files
 linux version on tani pc, mac version on borrowed from work
@@ -29,6 +29,7 @@ subscribe for changelog
 
 =======================================================================
 
+prerobit api requesty
 corona cases api
 zobrazit notifikaciu po uspesnom requeste
 zakazat moznost oznacovat text

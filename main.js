@@ -145,6 +145,12 @@ function createWindow () {
 						await shell.openExternal('https://new.costlocker.com/api-token')
 					}
 				},
+				{
+					label: 'Corona api documentation',
+					click: async () => {
+						await shell.openExternal('https://documenter.getpostman.com/view/10808728/SzS8rjbc')
+					}
+				},
 			]
 		}
 	];

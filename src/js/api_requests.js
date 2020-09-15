@@ -14,16 +14,9 @@ Api_requests.prototype.get_response_status_code = function() {
 	return this.response.status;
 }
 
-Api_requests.prototype.user_detail_promise = function() {
-	var headers = new Headers();
-	headers.append( 'Authorization', constants.get_authorization() );
-	var requestOptions = {
-		method: 'GET',
-		headers: headers,
-		redirect: 'follow'
-	};
+Api_requests.prototype.fetch_promise = function( url, requestOptions ) {
 	return fetch(
-		'https://new.costlocker.com/api-public/v2/me',
+		url,
 		requestOptions
 	).then(
 		response => {
@@ -44,6 +37,18 @@ Api_requests.prototype.user_detail_promise = function() {
 			console.log( 'error: ' + typeof error ); console.log( error );
 		}
 	);
+}
+
+Api_requests.prototype.user_detail_promise = function() {
+	var headers = new Headers();
+	headers.append( 'Authorization', constants.get_authorization() );
+	var requestOptions = {
+		method: 'GET',
+		headers: headers,
+		redirect: 'follow'
+	};
+	var url = 'https://new.costlocker.com/api-public/v2/me';
+	return this.fetch_promise( url, requestOptions );
 }
 
 Api_requests.prototype.get_assignments_promise = function() {
@@ -57,28 +62,8 @@ Api_requests.prototype.get_assignments_promise = function() {
 		redirect: 'follow',
 		body: post_body
 	};
-	return fetch(
-		'https://new.costlocker.com/api-public/v1/',
-		requestOptions
-	).then(
-		response => {
-			this.set_response( response );
-			return response;
-		}
-	).then(
-		response => {
-			// parse response text
-			return response.text();
-		}
-	).then(
-		result => {
-			return result;
-		}
-	).catch(
-		error => {
-			console.log( 'error: ' + typeof error ); console.log( error );
-		}
-	);
+	var url = 'https://new.costlocker.com/api-public/v1/';
+	return this.fetch_promise( url, requestOptions );
 }
 
 Api_requests.prototype.set_running_entry_promise = function() {
@@ -92,28 +77,8 @@ Api_requests.prototype.set_running_entry_promise = function() {
 		redirect: 'follow',
 		body: post_body
 	};
-	return fetch(
-		'https://new.costlocker.com/api-public/v2/timeentries/',
-		requestOptions
-	).then(
-		response => {
-			this.set_response( response );
-			return response;
-		}
-	).then(
-		response => {
-			// parse response text
-			return response.text();
-		}
-	).then(
-		result => {
-			return result;
-		}
-	).catch(
-		error => {
-			console.log( 'error: ' + typeof error ); console.log( error );
-		}
-	);
+	var url = 'https://new.costlocker.com/api-public/v2/timeentries/';
+	return this.fetch_promise( url, requestOptions );
 }
 
 Api_requests.prototype.stop_running_entry_promise = function() {
@@ -127,28 +92,8 @@ Api_requests.prototype.stop_running_entry_promise = function() {
 		redirect: 'follow',
 		body: post_body
 	};
-	return fetch(
-		'https://new.costlocker.com/api-public/v2/timeentries/',
-		requestOptions
-	).then(
-		response => {
-			this.set_response( response );
-			return response;
-		}
-	).then(
-		response => {
-			// parse response text
-			return response.text();
-		}
-	).then(
-		result => {
-			return result;
-		}
-	).catch(
-		error => {
-			console.log( 'error: ' + typeof error ); console.log( error );
-		}
-	);
+	var url = 'https://new.costlocker.com/api-public/v2/timeentries/';
+	return this.fetch_promise( url, requestOptions );
 }
 
 Api_requests.prototype.change_running_entry_promise = function() {
@@ -162,28 +107,8 @@ Api_requests.prototype.change_running_entry_promise = function() {
 		redirect: 'follow',
 		body: post_body
 	};
-	return fetch(
-		'https://new.costlocker.com/api-public/v2/timeentries/',
-		requestOptions
-	).then(
-		response => {
-			this.set_response( response );
-			return response;
-		}
-	).then(
-		response => {
-			// parse response text
-			return response.text();
-		}
-	).then(
-		result => {
-			return result;
-		}
-	).catch(
-		error => {
-			console.log( 'error: ' + typeof error ); console.log( error );
-		}
-	);
+	var url = 'https://new.costlocker.com/api-public/v2/timeentries/';
+	return this.fetch_promise( url, requestOptions );
 }
 
 Api_requests.prototype.corona_cases_api_promise = function() {
@@ -194,28 +119,8 @@ Api_requests.prototype.corona_cases_api_promise = function() {
 		headers: headers,
 		redirect: 'follow'
 	};
-	return fetch(
-		'https://api.covid19api.com/summary',
-		requestOptions
-	).then(
-		response => {
-			this.set_response( response );
-			return response;
-		}
-	).then(
-		response => {
-			// parse response text
-			return response.text();
-		}
-	).then(
-		result => {
-			return result;
-		}
-	).catch(
-		error => {
-			console.log( 'error: ' + typeof error ); console.log( error );
-		}
-	);
+	var url = 'https://api.covid19api.com/summary';
+	return this.fetch_promise( url, requestOptions );
 }
 
 export default new Api_requests;

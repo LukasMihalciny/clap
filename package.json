@@ -1,6 +1,6 @@
 {
   "name": "Clap",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "Costlocker desktop application",
   "main": "main.js",
   "scripts": {
