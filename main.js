@@ -23,7 +23,7 @@ function createWindow () {
 	win.loadFile('src/pages/main_window.html')
 
 	// Open the DevTools.
-	win.webContents.openDevTools()
+	// win.webContents.openDevTools()
 
 	// set menu arguments
 	const isMac = process.platform === 'darwin'

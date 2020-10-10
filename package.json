@@ -1,11 +1,12 @@
 {
   "name": "Clap",
-  "version": "0.0.38",
+  "version": "0.1.00",
   "description": "Costlocker desktop application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "css": "rimraf src/css/* && node-sass src/scss/_main.scss src/css/app.css --source-map true"
+    "css": "rimraf src/css/* && node-sass src/scss/_main.scss src/css/app.css --source-map true",
+    "icons": "rimraf src/images/icons/* && /wamp64/www/clap/node_modules/.bin/electron-icon-maker --input=/wamp64/www/clap/src/images/bat_source.png --output=/wamp64/www/clap/src/images"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,8 @@
   "homepage": "https://github.com/LukasMihalciny/clap#readme",
   "devDependencies": {
     "electron": "8.2.1",
+    "electron-icon-maker": "0.0.5",
+    "electron-packager": "15.1.0",
     "node-sass": "4.14.1",
     "rimraf": "3.0.2"
   },
