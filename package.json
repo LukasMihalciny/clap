@@ -1,13 +1,16 @@
 {
   "name": "Clap",
-  "version": "0.1.01",
+  "version": "0.1.02",
   "description": "Costlocker desktop application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "css": "rimraf src/css/* && node-sass src/scss/_main.scss src/css/app.css --source-map true",
     "icons": "rimraf src/images/icons/* && /wamp64/www/clap/node_modules/.bin/electron-icon-maker --input=/wamp64/www/clap/src/images/bat_source.png --output=/wamp64/www/clap/src/images",
-    "win": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ clap --overwrite --asar --platform=win32 --arch=ia32 --icon=/wamp64/www/clap/src/images/icons/win/icon.ico --prune --out=release_builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName='clap'"
+    "win": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ clap --overwrite --asar --platform=win32 --arch=ia32 --icon=/wamp64/www/clap/src/images/icons/win/icon.ico --prune --out=release_builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName='clap'",
+    "mac": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ clap --overwrite --platform=darwin --arch=x64 --icon=/wamp64/www/clap/src/images/icons/mac/icon.icns --prune --out=release_builds",
+    "linux": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ clap --overwrite --platform=linux --arch=x64 --icon=/wamp64/www/clap/src/images/icons/png/1024x1024.png --prune --out=release_builds",
+    "build": "echo - && echo run me in cmd.exe as admin && echo - && npm run win && npm run mac && npm run linux"
   },
   "repository": {
     "type": "git",
