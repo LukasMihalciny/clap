@@ -1,12 +1,13 @@
 {
   "name": "Clap",
-  "version": "0.1.00",
+  "version": "0.1.01",
   "description": "Costlocker desktop application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "css": "rimraf src/css/* && node-sass src/scss/_main.scss src/css/app.css --source-map true",
-    "icons": "rimraf src/images/icons/* && /wamp64/www/clap/node_modules/.bin/electron-icon-maker --input=/wamp64/www/clap/src/images/bat_source.png --output=/wamp64/www/clap/src/images"
+    "icons": "rimraf src/images/icons/* && /wamp64/www/clap/node_modules/.bin/electron-icon-maker --input=/wamp64/www/clap/src/images/bat_source.png --output=/wamp64/www/clap/src/images",
+    "win": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ clap --overwrite --asar --platform=win32 --arch=ia32 --icon=/wamp64/www/clap/src/images/icons/win/icon.ico --prune --out=release_builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName='clap'"
   },
   "repository": {
     "type": "git",
