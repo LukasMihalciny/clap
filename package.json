@@ -1,41 +1,50 @@
 {
-  "name": "Clap",
-  "version": "0.1.02",
-  "description": "Costlocker desktop application",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "css": "rimraf src/css/* && node-sass src/scss/_main.scss src/css/app.css --source-map true",
-    "icons": "rimraf src/images/icons/* && /wamp64/www/clap/node_modules/.bin/electron-icon-maker --input=/wamp64/www/clap/src/images/bat_source.png --output=/wamp64/www/clap/src/images",
-    "win": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ clap --overwrite --asar --platform=win32 --arch=ia32 --icon=/wamp64/www/clap/src/images/icons/win/icon.ico --prune --out=release_builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName='clap'",
-    "mac": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ clap --overwrite --platform=darwin --arch=x64 --icon=/wamp64/www/clap/src/images/icons/mac/icon.icns --prune --out=release_builds",
-    "linux": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ clap --overwrite --platform=linux --arch=x64 --icon=/wamp64/www/clap/src/images/icons/png/1024x1024.png --prune --out=release_builds",
-    "build": "echo - && echo run me in cmd.exe as admin && echo - && npm run win && npm run mac && npm run linux"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/LukasMihalciny/clap.git"
-  },
-  "keywords": [
-    "costlocker",
-    "electron",
-    "desktop",
-    "application"
-  ],
-  "author": "Lukas Mihalciny",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LukasMihalciny/clap/issues"
-  },
-  "homepage": "https://github.com/LukasMihalciny/clap#readme",
-  "devDependencies": {
-    "electron": "8.2.1",
-    "electron-icon-maker": "0.0.5",
-    "electron-packager": "15.1.0",
-    "node-sass": "4.14.1",
-    "rimraf": "3.0.2"
-  },
-  "dependencies": {
-    "bootstrap": "5.0.0-alpha1"
-  }
+    "name": "Clap",
+    "version": "0.1.03",
+    "description": "Costlocker desktop application",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "css": "rimraf src/css/* && node-sass src/scss/_main.scss src/css/app.css --source-map true",
+        "icons": "rimraf src/images/icons/* && /wamp64/www/clap/node_modules/.bin/electron-icon-maker --input=/wamp64/www/clap/src/images/bat_source.png --output=/wamp64/www/clap/src/images",
+        "build_win": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ CLAP --overwrite --asar --platform=win32 --arch=ia32 --icon=/wamp64/www/clap/src/images/icons/win/icon.ico --prune --out=release_builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName='Clap'",
+        "build_mac": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ CLAP --overwrite --platform=darwin --arch=x64 --icon=/wamp64/www/clap/src/images/icons/mac/icon.icns --prune --out=release_builds",
+        "build_linux": "/wamp64/www/clap/node_modules/.bin/electron-packager /wamp64/www/clap/ CLAP --overwrite --platform=linux --arch=x64 --icon=/wamp64/www/clap/src/images/icons/png/1024x1024.png --prune --out=release_builds",
+        "zip_folders_make": "/wamp64/www/clap/node_modules/.bin/mkdirp.cmd release_builds/win && /wamp64/www/clap/node_modules/.bin/mkdirp.cmd release_builds/mac && /wamp64/www/clap/node_modules/.bin/mkdirp.cmd release_builds/linux",
+        "zip_folders_clear": "rimraf release_builds/CLAP-win32-ia32 && rimraf release_builds/CLAP-darwin-x64 && rimraf release_builds/CLAP-linux-x64 && rimraf release_builds/win && rimraf release_builds/mac && rimraf release_builds/linux && ",
+        "zip_win": "/wamp64/www/clap/node_modules/.bin/move-cli.cmd release_builds/CLAP-win32-ia32 release_builds/win/Clap && npm-build-zip --source=release_builds/win/ --destination=release_builds/ --name=windows",
+        "zip_mac": "/wamp64/www/clap/node_modules/.bin/move-cli.cmd release_builds/CLAP-darwin-x64 release_builds/mac/Clap && npm-build-zip --source=release_builds/mac/ --destination=release_builds/ --name=mac",
+        "zip_linux": "/wamp64/www/clap/node_modules/.bin/move-cli.cmd release_builds/CLAP-linux-x64 release_builds/linux/Clap && npm-build-zip --source=release_builds/linux/ --destination=release_builds/ --name=linux",
+        "cmd": "echo ------------- && echo run me in cmd.exe as admin && echo -------------",
+        "build": "npm run cmd && npm run zip_folders_make && npm run build_win && npm run zip_win && npm run build_mac && npm run zip_mac && npm run build_linux && npm run zip_linux && npm run zip_folders_clear"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/LukasMihalciny/clap.git"
+    },
+    "keywords": [
+        "costlocker",
+        "electron",
+        "desktop",
+        "application"
+    ],
+    "author": "Lukas Mihalciny",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/LukasMihalciny/clap/issues"
+    },
+    "homepage": "https://github.com/LukasMihalciny/clap#readme",
+    "devDependencies": {
+        "electron": "8.2.1",
+        "electron-icon-maker": "0.0.5",
+        "electron-packager": "15.1.0",
+        "make-dir": "3.1.0",
+        "move-cli": "1.2.1",
+        "node-sass": "4.14.1",
+        "npm-build-zip": "1.0.2",
+        "rimraf": "3.0.2"
+    },
+    "dependencies": {
+        "bootstrap": "5.0.0-alpha1"
+    }
 }

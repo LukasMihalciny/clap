@@ -1,31 +1,31 @@
-build installation files
-linux version on tani pc, mac version on borrowed from work
 download website with patch notes
+globalna klavesova skratka pre otvorenie
+menit dnesne/trackovane?
+continue project
+mac version u kyryla
+celkovy plan UX/IU
+favourites? stared?
 prerobit get_cl_data na konkretne funkcie
 prerobit component promises
-celkovy plan UX/IU
-favourites? stared? menit dnesne/trackovane?
-continue project
-klobalna klavesova skratka pre otvorenie
 vizualny feedback navigacie formularom
 klavesove skratky pre navigaciu
 zatvorit po vykonani akcie do system tray
 otvorit okno po errore
 najprv zopakovat request
-prihlasovanie cez ucet
-odhlasovanie
 krajsi vizual - dark mode + neon light blue
 deliver updates
-start in debugging mode option (password protected)
 trello feedback
 keybind settings
 news database, request only for new news, display in modal, stored in localstorage, alert for new but access to old trough menu
+start in debugging mode option (password protected)
 donate btc
 app settings
 subscribe for changelog
 
 =======================================================================
 
+linux version on tani pc
+build installation files
 about - current version, available version
 fixnut null v trackovanom a today
 search medzi trakovatelnymi projektami
