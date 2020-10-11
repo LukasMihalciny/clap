@@ -1,4 +1,4 @@
-download website with patch notes
+trello/asana feedback
 globalna klavesova skratka pre otvorenie
 menit dnesne/trackovane?
 continue project
@@ -14,16 +14,19 @@ otvorit okno po errore
 najprv zopakovat request
 krajsi vizual - dark mode + neon light blue
 deliver updates
-trello feedback
 keybind settings
 news database, request only for new news, display in modal, stored in localstorage, alert for new but access to old trough menu
 start in debugging mode option (password protected)
 donate btc
 app settings
+	global keybind
+	run on startup
+	minimalise into system tray
 subscribe for changelog
 
 =======================================================================
 
+download website
 linux version on tani pc
 build installation files
 about - current version, available version

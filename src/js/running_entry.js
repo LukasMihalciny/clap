@@ -158,8 +158,8 @@ Running_entry.prototype.fill_tracking_project = function() {
 		}
 		this.tracking_holder.innerHTML = html;
 		this.track_duration_start();
+		constants.set_running_description( running_entry.description );
 	}
-	constants.set_running_description( running_entry.description );
 }
 
 Running_entry.prototype.track_duration_start = function() {
