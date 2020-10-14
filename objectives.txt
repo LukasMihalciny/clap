@@ -1,3 +1,4 @@
+zatvorit po vykonani akcie do system tray - tray je bugnuty
 trello/asana feedback
 globalna klavesova skratka pre otvorenie
 menit dnesne/trackovane?
@@ -9,7 +10,6 @@ prerobit get_cl_data na konkretne funkcie
 prerobit component promises
 vizualny feedback navigacie formularom
 klavesove skratky pre navigaciu
-zatvorit po vykonani akcie do system tray
 otvorit okno po errore
 najprv zopakovat request
 krajsi vizual - dark mode + neon light blue

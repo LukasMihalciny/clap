@@ -165,6 +165,7 @@ function createWindow () {
 	Menu.setApplicationMenu(menu)
 
 	// tray
+	/*WAS BUGGED, TURNED OFF TEMPORARILY
 	let tray = null;
 	tray = createTray();
 	win.on(
@@ -181,7 +182,7 @@ function createWindow () {
 			win.show();
 			// tray.destroy();
 		}
-	);
+	);*/
 
 	// store in var
 	return win;
