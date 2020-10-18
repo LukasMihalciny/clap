@@ -108,11 +108,11 @@ Running_entry.prototype.hide_description_input = function() {
 /************************************************************************************/
 Running_entry.prototype.change_description = function(event) {
 
-	if ( event.keyCode === 27 ) {
+	if ( event.type === 'keydown' && event.keyCode === 27 ) {
 		// cancel on Esc
 		this.hide_description_input();
 		return;
-	} else if ( event.keyCode !== 13 && event.keyCode !== 9 ) {
+	} else if ( event.type === 'keydown' && event.keyCode !== 13 && event.keyCode !== 9 ) {
 		// do nothing if not Enter or Tab
 		return;
 	}

@@ -1,8 +1,4 @@
-description ulozit na blur
-logout do menu
 change project
-viem v liste zobrazovat cas trackovaneho projektu?
-vykonava sa request indikator
 
 trello/asana feedback
 globalna klavesova skratka pre otvorenie
@@ -14,10 +10,12 @@ favourites? stared?
 prerobit get_cl_data na konkretne funkcie
 prerobit component promises
 vizualny feedback navigacie formularom
+viem v liste zobrazovat cas trackovaneho projektu?
 klavesove skratky pre navigaciu
 otvorit okno po errore
 najprv zopakovat request
 krajsi vizual - dark mode + neon light blue
+logout do menu
 deliver updates
 news database, request only for new news, display in modal, stored in localstorage, alert for new but access to old trough menu
 start in debugging mode option (password protected)
@@ -32,6 +30,7 @@ subscribe for changelog
 
 =======================================================================
 
+description ulozit na blur
 trackovat prazdne
 zobrazit aj vcerajsie
 download website

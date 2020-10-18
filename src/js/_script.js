@@ -47,7 +47,7 @@ Clap.prototype.initialize_events = function() {
 	description_input.addEventListener(
 		'blur',
 		function(){
-			running_entry.hide_description_input();
+			running_entry.change_description( event );
 		}.bind( this )
 	);
 	description_input.addEventListener(
