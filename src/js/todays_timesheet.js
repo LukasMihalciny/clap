@@ -98,7 +98,7 @@ Todays_timesheet.prototype.get_project_name_by_id = function( id ) {
 		}
 	}
 
-	return 'didnt find project ' + id;
+	return 'null';
 
 }
 
@@ -113,7 +113,7 @@ Todays_timesheet.prototype.get_activity_name_by_id = function( id ) {
 		}
 	}
 
-	return 'didnt find activity ' + id;
+	return 'null';
 
 }
 

@@ -17,7 +17,8 @@ Prepare_request_data.prototype.getting_assignments = function() {
 		'Simple_Activities': {},
 		'Simple_Timesheet': {
 			'datef': functions_dates.yesterday_date_in_request_format(),
-			'datet': functions_dates.current_date_in_request_format()
+			'datet': functions_dates.current_date_in_request_format(),
+			'nonproject': true
 		},
 		'Simple_Tracking_Assignments': {},
 		'Simple_Tracking_RunningEntry': {},
@@ -55,10 +56,12 @@ Prepare_request_data.prototype.setting_entry = function() {
 	var i, len = data_names.length;
 	for ( i = 0; i < len; i++ ) {
 
-		if ( target.dataset[ data_names[i] ] === null || target.dataset[ data_names[i] ] === 'null' ) {
-			continue;
+		if ( target.dataset[ data_names[i] ] === 'null' ) {
+			post_body.data[0].assignment[ data_names[i] ] = null;
 		}
-		post_body.data[0].assignment[ data_names[i] ] = target.dataset[ data_names[i] ];
+		else {
+			post_body.data[0].assignment[ data_names[i] ] = target.dataset[ data_names[i] ];
+		}
 
 	}
 

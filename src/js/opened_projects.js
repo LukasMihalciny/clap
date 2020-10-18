@@ -80,19 +80,22 @@ Opened_projects.prototype.fill_buttons = function() {
 	var i = 0, len = assignments.length;
 	while ( i < len ) {
 
-		if ( assignments[i].names.project_name === null ) {
-			i++; continue;
-		}
-
 		var html = this.button_html;
 
 		html = html.replace( '{{person_id}}', assignments[i].assignment.person_id );
 		html = html.replace( '{{project_id}}', assignments[i].assignment.project_id );
 		html = html.replace( '{{activity_id}}', assignments[i].assignment.activity_id );
 		html = html.replace( '{{task_id}}', assignments[i].assignment.task_id );
-		html = html.replace( '{{project_name}}', assignments[i].names.project_name );
-		html = html.replace( '{{activity_name}}', assignments[i].names.activity_name );
-
+		if ( assignments[i].names.project_name === null ) {
+			html = html.replace( '{{project_name}}', 'null' );
+		} else {
+			html = html.replace( '{{project_name}}', assignments[i].names.project_name );
+		}
+		if ( assignments[i].names.activity_name === null ) {
+			html = html.replace( '{{activity_name}}', 'null' );
+		} else {
+			html = html.replace( '{{activity_name}}', assignments[i].names.activity_name );
+		}
 		if ( assignments[i].names.task_name === null ) {
 			html = html.replace( '{{task_name}}', '' );
 		} else {
