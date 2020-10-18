@@ -1,4 +1,11 @@
-zatvorit po vykonani akcie do system tray - tray je bugnuty
+vykonava sa request indikator
+zobrazit aj vcerajsie
+trackovat prazdne
+description ulozit na blur
+logout do menu
+change project
+viem v liste zobrazovat cas trackovaneho projektu?
+
 trello/asana feedback
 globalna klavesova skratka pre otvorenie
 menit dnesne/trackovane?
@@ -14,7 +21,6 @@ otvorit okno po errore
 najprv zopakovat request
 krajsi vizual - dark mode + neon light blue
 deliver updates
-keybind settings
 news database, request only for new news, display in modal, stored in localstorage, alert for new but access to old trough menu
 start in debugging mode option (password protected)
 donate btc
@@ -22,6 +28,8 @@ app settings
 	global keybind
 	run on startup
 	minimalise into system tray
+	keybind settings
+zatvorit po vykonani akcie do system tray - tray je bugnuty
 subscribe for changelog
 
 =======================================================================

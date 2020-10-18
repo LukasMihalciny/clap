@@ -6,13 +6,23 @@ import constants from './constants.js';
 import login from './login.js';
 import running_entry from './running_entry.js';
 import opened_projects from './opened_projects.js';
+import corona from './corona.js';
+
 
 function Clap() {
-	this.initialize();
+
+	this.initialize_events();
+	login.on_startup_check_localstorage();
+	corona.initialize_corona();
+
 }
 
-Clap.prototype.initialize = function() {
-	// what to run after startup
+/************************************************************************************/
+/* initialize and set events */
+/************************************************************************************/
+Clap.prototype.initialize_events = function() {
+
+	// sorting click events
 	var event_holder = document.getElementById( 'event_holder' );
 	event_holder.addEventListener(
 		'click',
@@ -21,6 +31,8 @@ Clap.prototype.initialize = function() {
 			this.click_events();
 		}.bind( this )
 	);
+
+	// description input
 	var description_input = running_entry.input;
 	description_input.addEventListener(
 		'blur',
@@ -34,6 +46,8 @@ Clap.prototype.initialize = function() {
 			running_entry.change_description( event );
 		}.bind( this )
 	);
+
+	// filter input
 	var filter_input = opened_projects.filter_input;
 	filter_input.addEventListener(
 		'keyup',
@@ -41,28 +55,43 @@ Clap.prototype.initialize = function() {
 			opened_projects.filter_buttons( event );
 		}.bind( this )
 	);
-	login.on_startup_check_localstorage();
+
 }
 
+
+/************************************************************************************/
+/* sort all click event happening inside the main window */
+/************************************************************************************/
 Clap.prototype.click_events = function() {
-	// all click event happening inside the main window
+
 	var target = constants.get_clicked_target();
+
 	if ( target.id === 'open_token_page' ) {
 		shell.openExternal( 'https://new.costlocker.com/api-token' );
-	} else if ( target.id === 'log_in_button' ) {
+	}
+	else if ( target.id === 'log_in_button' ) {
 		login.log_me_in();
-	} else if ( target.id === 'log_out_button' ) {
+	}
+	else if ( target.id === 'log_out_button' ) {
 		login.log_out();
-	} else if (
+	}
+	else if (
 		target.classList.contains( 'opened_project_button' ) ||
 		target.parentNode.classList.contains( 'opened_project_button' )
 	) {
 		running_entry.start_tracking();
-	} else if ( target.id === 'stop_tracking' ) {
+	}
+	else if ( target.id === 'stop_tracking' ) {
 		running_entry.stop_tracking();
-	} else if ( target.id === 'change_description' ) {
+	}
+	else if ( target.id === 'change_description' ) {
 		running_entry.show_description_input();
 	}
+
 }
 
+
+/************************************************************************************/
+/* create and init class */
+/************************************************************************************/
 var clap = new Clap;

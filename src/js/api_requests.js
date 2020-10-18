@@ -3,18 +3,26 @@
 import constants from './constants.js';
 import prepare_request_data from './prepare_request_data.js';
 
+
 function Api_requests() {
 	this.response = {};
 	this.result = {};
 }
+
 Api_requests.prototype.set_response = function( response ) {
 	this.response = response;
 }
+
 Api_requests.prototype.get_response_status_code = function() {
 	return this.response.status;
 }
 
+
+/************************************************************************************/
+/* main fetch */
+/************************************************************************************/
 Api_requests.prototype.fetch_promise = function( url, requestOptions ) {
+
 	return fetch(
 		url,
 		requestOptions
@@ -37,9 +45,15 @@ Api_requests.prototype.fetch_promise = function( url, requestOptions ) {
 			console.log( 'error: ' + typeof error ); console.log( error );
 		}
 	);
+
 }
 
+
+/************************************************************************************/
+/* user detail */
+/************************************************************************************/
 Api_requests.prototype.user_detail_promise = function() {
+
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	var requestOptions = {
@@ -48,14 +62,21 @@ Api_requests.prototype.user_detail_promise = function() {
 		redirect: 'follow'
 	};
 	var url = 'https://new.costlocker.com/api-public/v2/me';
+
 	return this.fetch_promise( url, requestOptions );
+
 }
 
+
+/************************************************************************************/
+/* assignments */
+/************************************************************************************/
 Api_requests.prototype.get_assignments_promise = function() {
+
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
-	var post_body = prepare_request_data.getting_cl_data();
+	var post_body = prepare_request_data.getting_assignments();
 	var requestOptions = {
 		method: 'POST',
 		headers: headers,
@@ -63,10 +84,17 @@ Api_requests.prototype.get_assignments_promise = function() {
 		body: post_body
 	};
 	var url = 'https://new.costlocker.com/api-public/v1/';
+
 	return this.fetch_promise( url, requestOptions );
+
 }
 
+
+/************************************************************************************/
+/* run entry */
+/************************************************************************************/
 Api_requests.prototype.set_running_entry_promise = function() {
+
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
@@ -78,10 +106,17 @@ Api_requests.prototype.set_running_entry_promise = function() {
 		body: post_body
 	};
 	var url = 'https://new.costlocker.com/api-public/v2/timeentries/';
+
 	return this.fetch_promise( url, requestOptions );
+
 }
 
+
+/************************************************************************************/
+/* stop entry */
+/************************************************************************************/
 Api_requests.prototype.stop_running_entry_promise = function() {
+
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
@@ -93,10 +128,17 @@ Api_requests.prototype.stop_running_entry_promise = function() {
 		body: post_body
 	};
 	var url = 'https://new.costlocker.com/api-public/v2/timeentries/';
+
 	return this.fetch_promise( url, requestOptions );
+
 }
 
+
+/************************************************************************************/
+/* change entry */
+/************************************************************************************/
 Api_requests.prototype.change_running_entry_promise = function() {
+
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
@@ -108,10 +150,17 @@ Api_requests.prototype.change_running_entry_promise = function() {
 		body: post_body
 	};
 	var url = 'https://new.costlocker.com/api-public/v2/timeentries/';
+
 	return this.fetch_promise( url, requestOptions );
+
 }
 
+
+/************************************************************************************/
+/* corona */
+/************************************************************************************/
 Api_requests.prototype.corona_cases_api_promise = function() {
+
 	var headers = new Headers();
 	headers.append( 'Content-Type', 'application/json' );
 	var requestOptions = {
@@ -120,7 +169,13 @@ Api_requests.prototype.corona_cases_api_promise = function() {
 		redirect: 'follow'
 	};
 	var url = 'https://api.covid19api.com/summary';
+
 	return this.fetch_promise( url, requestOptions );
+
 }
 
+
+/************************************************************************************/
+/* export class */
+/************************************************************************************/
 export default new Api_requests;
