@@ -69,6 +69,23 @@ Functions_dates.prototype.current_date_in_request_format = function() {
 
 
 /************************************************************************************/
+/* yesterday_date_in_request_format */
+/************************************************************************************/
+Functions_dates.prototype.yesterday_date_in_request_format = function() {
+
+	// '2020-08-23'
+	var yesterday = new Date();
+	yesterday.setDate( yesterday.getDate() - 1 );
+	return yesterday.getFullYear() +
+	'-' +
+	( '0' + (yesterday.getMonth()+1) ).slice(-2) +
+	'-' +
+	( '0' + yesterday.getDate() ).slice(-2);
+
+}
+
+
+/************************************************************************************/
 /* get_duration_in_seconds */
 /************************************************************************************/
 Functions_dates.prototype.get_duration_in_seconds = function( cl_start ) {

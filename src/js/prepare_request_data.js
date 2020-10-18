@@ -16,7 +16,7 @@ Prepare_request_data.prototype.getting_assignments = function() {
 		'Simple_Projects': {},
 		'Simple_Activities': {},
 		'Simple_Timesheet': {
-			'datef': functions_dates.current_date_in_request_format(),
+			'datef': functions_dates.yesterday_date_in_request_format(),
 			'datet': functions_dates.current_date_in_request_format()
 		},
 		'Simple_Tracking_Assignments': {},

@@ -9,6 +9,16 @@ import opened_projects from './opened_projects.js';
 import corona from './corona.js';
 
 
+/************************************************************************************/
+/* set global variable for easier debugging in modules */
+/* this could backfire one day, stay cautious */
+/************************************************************************************/
+window.constants = constants;
+
+
+/************************************************************************************/
+/* what to do after startup */
+/************************************************************************************/
 function Clap() {
 
 	this.initialize_events();
