@@ -100,9 +100,9 @@ Prepare_request_data.prototype.stopping_entry = function() {
 
 
 /************************************************************************************/
-/* change entry */
+/* change description */
 /************************************************************************************/
-Prepare_request_data.prototype.changing_entry = function() {
+Prepare_request_data.prototype.changing_description = function() {
 
 	var running = constants.get_cl_data().Simple_Tracking_RunningEntry;
 
@@ -121,6 +121,51 @@ Prepare_request_data.prototype.changing_entry = function() {
 			}
 		]
 	};
+
+	return JSON.stringify( post_body );
+
+}
+
+
+/************************************************************************************/
+/* change project */
+/************************************************************************************/
+Prepare_request_data.prototype.changing_project = function() {
+
+	var target = constants.get_clicked_target();
+	if ( ! target.classList.contains( 'opened_project_button' ) ) {
+		target = target.parentNode;
+	}
+
+	var running = constants.get_cl_data().Simple_Tracking_RunningEntry;
+
+	var post_body = {
+		'data': [
+			{
+				'uuid': running.uuid,
+				'date': running.date,
+				'assignment': {}
+			}
+		]
+	};
+
+	if ( running.description !== null ) {
+		post_body.data[0].description = running.description;
+	}
+
+	var data_names = [ 'person_id', 'project_id', 'activity_id', 'task_id' ];
+
+	var i, len = data_names.length;
+	for ( i = 0; i < len; i++ ) {
+
+		if ( target.dataset[ data_names[i] ] === 'null' ) {
+			post_body.data[0].assignment[ data_names[i] ] = null;
+		}
+		else {
+			post_body.data[0].assignment[ data_names[i] ] = target.dataset[ data_names[i] ];
+		}
+
+	}
 
 	return JSON.stringify( post_body );
 

@@ -135,14 +135,36 @@ Api_requests.prototype.stop_running_entry_promise = function() {
 
 
 /************************************************************************************/
-/* change entry */
+/* change description */
 /************************************************************************************/
-Api_requests.prototype.change_running_entry_promise = function() {
+Api_requests.prototype.change_running_entry_description = function() {
 
 	var headers = new Headers();
 	headers.append( 'Authorization', constants.get_authorization() );
 	headers.append( 'Content-Type', 'application/json' );
-	var post_body = prepare_request_data.changing_entry();
+	var post_body = prepare_request_data.changing_description();
+	var requestOptions = {
+		method: 'POST',
+		headers: headers,
+		redirect: 'follow',
+		body: post_body
+	};
+	var url = 'https://new.costlocker.com/api-public/v2/timeentries/';
+
+	return this.fetch_promise( url, requestOptions );
+
+}
+
+
+/************************************************************************************/
+/* change project */
+/************************************************************************************/
+Api_requests.prototype.change_running_entry_project = function() {
+
+	var headers = new Headers();
+	headers.append( 'Authorization', constants.get_authorization() );
+	headers.append( 'Content-Type', 'application/json' );
+	var post_body = prepare_request_data.changing_project();
 	var requestOptions = {
 		method: 'POST',
 		headers: headers,

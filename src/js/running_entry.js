@@ -23,19 +23,44 @@ function Running_entry() {
 /************************************************************************************/
 Running_entry.prototype.start_tracking = function() {
 
-	api_requests.set_running_entry_promise().then(
-		result => {
+	var running = constants.get_cl_data().Simple_Tracking_RunningEntry;
 
-			if ( api_requests.get_response_status_code() === 200 ) {
-				// started tracking project successful
-				this.refresh_asignments();
-			} else {
-				// display error
-				error_window.display( result, 'Tracking project failed.' );
+	// new project
+	if ( running === null ) {
+
+		api_requests.set_running_entry_promise().then(
+			result => {
+
+				if ( api_requests.get_response_status_code() === 200 ) {
+					// started tracking project successful
+					this.refresh_asignments();
+				} else {
+					// display error
+					error_window.display( result, 'Tracking project failed.' );
+				}
+
 			}
+		);
 
-		}
-	);
+	}
+	// change project
+	else {
+
+		api_requests.change_running_entry_project().then(
+			result => {
+
+				if ( api_requests.get_response_status_code() === 200 ) {
+					// started tracking project successful
+					this.refresh_asignments();
+				} else {
+					// display error
+					error_window.display( result, 'Changing project failed.' );
+				}
+
+			}
+		);
+
+	}
 
 }
 
@@ -120,7 +145,7 @@ Running_entry.prototype.change_description = function(event) {
 	constants.set_running_description( this.input.value );
 	this.hide_description_input();
 
-	api_requests.change_running_entry_promise().then(
+	api_requests.change_running_entry_description().then(
 		result => {
 
 			if ( api_requests.get_response_status_code() === 200 ) {
@@ -128,7 +153,7 @@ Running_entry.prototype.change_description = function(event) {
 				this.refresh_asignments();
 			} else {
 				// display error
-				error_window.display( result, 'Changing project failed.' );
+				error_window.display( result, 'Changing description failed.' );
 			}
 
 		}
