@@ -135,14 +135,17 @@ h2 {
 	border-left: 1px solid $primary_color;
 }
 
-#project_list > div {
+#project_list_today > div,
+#project_list_yesterday > div {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
-#project_list h5 {
+#project_list_today h5,
+#project_list_yesterday h5 {
 	margin-bottom: 4px;
 }
-#project_list span {
+#project_list_today span,
+#project_list_yesterday span {
 	padding-right: 10px;
 	opacity: 0.6;
 }
