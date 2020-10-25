@@ -95,6 +95,28 @@ Running_entry.prototype.stop_tracking = function() {
 
 
 /************************************************************************************/
+/* continue */
+/************************************************************************************/
+Running_entry.prototype.continue_project = function() {
+
+	api_requests.set_running_entry_promise().then(
+		result => {
+
+			if ( api_requests.get_response_status_code() === 200 ) {
+				// started tracking project successful
+				this.refresh_asignments();
+			} else {
+				// display error
+				error_window.display( result, 'Continue project failed.' );
+			}
+
+		}
+	);
+
+}
+
+
+/************************************************************************************/
 /* description show hide */
 /************************************************************************************/
 Running_entry.prototype.show_description_input = function() {

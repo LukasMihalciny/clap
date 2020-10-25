@@ -37,7 +37,10 @@ Prepare_request_data.prototype.getting_assignments = function() {
 Prepare_request_data.prototype.setting_entry = function() {
 
 	var target = constants.get_clicked_target();
-	if ( ! target.classList.contains( 'opened_project_button' ) ) {
+	if (
+		! target.classList.contains( 'opened_project_button' ) &&
+		! target.classList.contains( 'continue_project' )
+	) {
 		target = target.parentNode;
 	}
 
@@ -50,6 +53,10 @@ Prepare_request_data.prototype.setting_entry = function() {
 			}
 		]
 	};
+
+	if ( target.dataset.description !== null ) {
+		post_body.data[0].description = target.dataset.description;
+	}
 
 	var data_names = [ 'person_id', 'project_id', 'activity_id', 'task_id' ];
 

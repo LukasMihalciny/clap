@@ -61,6 +61,11 @@ Todays_timesheet.prototype.fill_timesheet = function() {
 		} else {
 			html = html.replace( '{{task_name}}', timesheet[i].task_name );
 		}
+		html = html.replace( '{{person_id}}', timesheet[i].person );
+		html = html.replace( '{{project_id}}', timesheet[i].project );
+		html = html.replace( '{{activity_id}}', timesheet[i].activity );
+		html = html.replace( '{{task_id}}', timesheet[i].task );
+		html = html.replace( '{{description}}', timesheet[i].description );
 
 		if ( new Date( timesheet[i].date ).getDate() === new Date().getDate() ) {
 			// today

@@ -97,6 +97,9 @@ Clap.prototype.click_events = function() {
 	else if ( target.id === 'change_description' ) {
 		running_entry.show_description_input();
 	}
+	else if ( target.classList.contains( 'continue_project' ) ) {
+		running_entry.continue_project();
+	}
 
 }
 

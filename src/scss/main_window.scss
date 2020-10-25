@@ -135,21 +135,6 @@ h2 {
 	border-left: 1px solid $primary_color;
 }
 
-#project_list_today > div,
-#project_list_yesterday > div {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-#project_list_today h5,
-#project_list_yesterday h5 {
-	margin-bottom: 4px;
-}
-#project_list_today span,
-#project_list_yesterday span {
-	padding-right: 10px;
-	opacity: 0.6;
-}
-
 #projects {
 	.project_name {
 		font-weight: 600;
@@ -173,4 +158,41 @@ h2 {
 
 #projects_wrap > div.hidden {
 	display: none;
+}
+
+/* today/yesterday specific
+============================================= */
+#project_list_today > div,
+#project_list_yesterday > div {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#project_list_today h5,
+#project_list_yesterday h5 {
+	margin-bottom: 4px;
+}
+#project_list_today span,
+#project_list_yesterday span {
+	padding-right: 10px;
+	opacity: 0.6;
+}
+
+/* todays actions
+============================================= */
+.actions_wrap .project_actions,
+.actions_wrap:hover .project_duration {
+	display: none;
+}
+.actions_wrap:hover .project_actions,
+.actions_wrap .project_duration {
+	display: block;
+}
+
+.actions_wrap {
+	min-height: 64px;
+	img {
+		margin-left: 8px;
+		margin-top: 5px;
+		cursor: pointer;
+	}
 }

@@ -1,7 +1,6 @@
 trello/asana feedback
 globalna klavesova skratka pre otvorenie
 menit dnesne/trackovane?
-continue project
 mac version u kyryla
 celkovy plan UX/IU
 favourites? stared?
@@ -28,6 +27,7 @@ subscribe for changelog
 
 =======================================================================
 
+continue project
 change project
 description ulozit na blur
 trackovat prazdne

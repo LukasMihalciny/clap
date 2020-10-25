@@ -2,7 +2,19 @@
 	<h5>{{project_name}} <small>{{description}}</small></h5>
 	<small>{{activity_name}} </small>{{task_name}}
 </div>
-<div class="col-sm-3">
-	<small>Duration:</small>
-	<p>{{duration}}</p>
+<div class="col-sm-3 actions_wrap">
+	<div class="project_duration">
+		<small>Duration:</small>
+		<p>{{duration}}</p>
+	</div>
+	<div class="project_actions">
+		<small>Continue</small>
+		<br>
+		<img class="continue_project" width="30" src="../images/continue.svg"
+		data-person_id="{{person_id}}"
+		data-project_id="{{project_id}}"
+		data-activity_id="{{activity_id}}"
+		data-task_id="{{task_id}}"
+		data-description="{{description}}">
+	</div>
 </div>
