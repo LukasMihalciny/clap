@@ -1,13 +1,13 @@
 {
     "name": "Clap",
-    "version": "0.1.12",
+    "version": "0.2.0",
     "description": "Costlocker desktop application",
     "main": "main.js",
     "scripts": {
         "start": "electron .",
         "css": "rimraf src/css/* && node-sass src/scss/_main.scss src/css/app.css --source-map true",
         "icons": "npm run icons_remove && npm run icons_create",
-        "build": "npm run cmd && npm run zip_folders_clear && npm run zip_folders_win && npm run zip_folders_mac && npm run zip_folders_linux && npm run build_win && npm run zip_win && npm run build_mac && npm run zip_mac && npm run build_linux && npm run zip_linux",
+        "build": "npm run cmd && npm run css && npm run zip_folders_clear && npm run zip_folders_win && npm run zip_folders_mac && npm run zip_folders_linux && npm run build_win && npm run zip_win && npm run build_mac && npm run zip_mac && npm run build_linux && npm run zip_linux",
         "icons_remove": "rimraf src/images/icons/*",
         "icons_create": "node_modules/.bin/electron-icon-maker --input=src/images/bat_source.png --output=src/images",
         "cmd": "echo ------------- && echo run me in cmd.exe as admin && echo -------------",
@@ -39,7 +39,7 @@
     },
     "homepage": "https://github.com/LukasMihalciny/clap#readme",
     "devDependencies": {
-        "electron": "8.2.1",
+        "electron": "10.1.5",
         "electron-icon-maker": "0.0.5",
         "electron-packager": "15.1.0",
         "make-dir": "3.1.0",

@@ -17,6 +17,10 @@ function createWindow () {
 		resizable: false,
 		center: true,
 		// thickFrame: true,
+		webPreferences: {
+			nodeIntegration: true,
+			enableRemoteModule: true,
+		},
 	})
 
 	// and load the main_window.html of the app.
@@ -258,6 +262,10 @@ function create_about_window() {
 				nodeIntegration: true
 			},
 			autoHideMenuBar: true,
+			webPreferences: {
+				nodeIntegration: true,
+				enableRemoteModule: true,
+			},
 		}
 	);
 	// how to close window
