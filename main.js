@@ -14,7 +14,7 @@ function createWindow () {
 		},
 		icon: path.join( __dirname, 'src/images/bat_1.ico' ),
 		transparent: true,
-		resizable: false,
+		resizable: true,
 		center: true,
 		// thickFrame: true,
 		webPreferences: {
@@ -75,7 +75,7 @@ function createWindow () {
 			]
 		},
 		// { role: 'editMenu' }
-		/*{
+		{
 			label: 'Edit',
 			submenu: [
 				{ role: 'undo' },
@@ -101,6 +101,18 @@ function createWindow () {
 						{ type: 'separator' },
 						{ role: 'selectAll' }
 				])
+			]
+		},
+		/*{
+			label: "Edit",
+			submenu: [
+				{ label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+				{ label: "Redo", accelerator: "CmdOrCtrl+Y", selector: "redo:" },
+				{ type: "separator" },
+				{ label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+				{ label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+				{ label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+				{ label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
 			]
 		},*/
 		// { role: 'viewMenu' }

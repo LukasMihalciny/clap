@@ -1,13 +1,12 @@
-vyskusaj rozbehat autoupdate
-	najprv v electron-builder
-	potom v inom builderi
-
-vybuilduj od andrea, publishni
+feedback:
+	mac system bar zpriesvitnel kyrylovi
+	kyrylovi vadilo ze ked klikne na task tak hned zacne trackovat
+	dizajn sa mu nepacil
+	juraj chce spravit lepsie UI a ikonu :D
 
 trello/asana feedback
 globalna klavesova skratka pre otvorenie
 menit dnesne/trackovane?
-mac version u kyryla
 celkovy plan UX/IU
 favourites? stared?
 prerobit get_cl_data na konkretne funkcie
@@ -28,11 +27,15 @@ app settings
 	run on startup
 	minimalise into system tray
 	keybind settings
+vyskusaj rozbehat autoupdate, najprv v electron-builder. potom v inom builderi
 zatvorit po vykonani akcie do system tray - tray je bugnuty
 subscribe for changelog
 
 =======================================================================
 
+	jurajovi neslo spustit
+	chce resiznut okno appky
+	kopirovat/vlozit nefunguje, token musel pisat rucne
 updatni electron a vsetky ostatne casti
 sprav aby prod buildovalo aj css
 continue project
