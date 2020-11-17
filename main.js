@@ -13,8 +13,8 @@ function createWindow () {
 			nodeIntegration: true
 		},
 		icon: path.join( __dirname, 'src/images/bat_1.ico' ),
-		transparent: true,
-		resizable: true,
+		// transparent: true,
+		// resizable: false,
 		center: true,
 		// thickFrame: true,
 		webPreferences: {
