@@ -39,7 +39,7 @@
     },
     "homepage": "https://github.com/LukasMihalciny/clap#readme",
     "devDependencies": {
-        "electron": "10.1.5",
+        "electron": "22.3.21",
         "electron-icon-maker": "0.0.5",
         "electron-packager": "15.1.0",
         "make-dir": "3.1.0",
